@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Project</string>
+    <string name="location_error">Location Error: GPS Disabled!</string>
+    <string name="enable">Enable</string>
+    <string name="permissions_not_granted">Permissions not granted</string>
+    <string name="ok">OK</string>
+    <string name="location_permissions_message">Location is needed to find your country for prayer times</string>
+    <string name="permissions_title">Permission needed!</string>
+    <string name="loading">Loading...</string>
+    <string name="location_got">Location got</string>
+    <string name="waiting_location">Please Enable Location from Settings</string>
+    <string name="waiting_permissions">Checking Permissions...</string>
+    <string-array name="calc_methods">
+        <item>University of Islamic Sciences, Karachi</item>
+        <item>Islamic Society of North America</item>
+        <item>Muslim World League</item>
+        <item>Umm Al-Qura University, Makkah</item>
+        <item>Egyptian General Authority of Survey</item>
+        <item>Institute of Geophysics, University of Tehran</item>
+        <item> Gulf Region</item>
+        <item>Kuwait</item>
+        <item>Qatar</item>
+        <item>Majlis Ugama Islam Singapura, Singapore</item>
+        <item>Union Organization islamic de France</item>
+        <item>Diyanet İşleri Başkanlığı, Turkey</item>
+    </string-array>
+    <string-array name="prayers">
+        <item>Fajr</item>
+        <item>Sunrise</item>
+        <item>Dhuhr</item>
+        <item>Asr</item>
+        <item>Maghrib</item>
+        <item>Isha</item>
+    </string-array>
+    <string-array name="hijri_months">
+        <item>Muḥarram</item>
+        <item>Ṣafar</item>
+        <item>Rabīʿ al-Awwal</item>
+        <item>Rabīʿ ath-Thānī</item>
+        <item>Jumādá al-Ūlá</item>
+        <item>Jumādá al-Ākhirah</item>
+        <item>Rajab</item>
+        <item>Sha‘bān</item>
+        <item>Ramaḍān</item>
+        <item>Shawwāl</item>
+        <item>Dhū al-Qa‘dah</item>
+        <item>Dhū al-Ḥijjah</item>
+    </string-array>
+    <string name="recalibrate_location">Calibrate Location</string>
+    <string name="recalibrate_tunes">Adjust Times</string>
+    <string name="recalibrate_calcmethod">Change Calculation Method</string>
+    <string name="nav_title">Change Settings</string>
+    <string name="saved">Changes saved</string>
+</resources>
