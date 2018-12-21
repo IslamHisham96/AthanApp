@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.io.Console;
 import java.util.Arrays;
+import java.util.Calendar;
 
 public class Time {
 
@@ -23,12 +24,10 @@ public class Time {
     }
     public Time(String time){
         String[] splitTime = time.split(":");
-        Log.d(Constants.TAG,Arrays.toString(splitTime));
         hours = Integer.parseInt(splitTime[0]);
         minutes = Integer.parseInt(splitTime[1]);
         if(splitTime.length>2)
             seconds = Integer.parseInt(splitTime[2]);
-        Log.d(Constants.TAG,this.toString());
     }
     public Time(long milliseconds){
         seconds = (int) (milliseconds / 1000) % 60 ;
@@ -43,7 +42,6 @@ public class Time {
         Time tstart = new Time(start);
         Time tstop = new Time(stop);
 
-        if(tstop.hours > tstart.hours) tstart.hours+= 24;
 
         if(tstop.seconds > tstart.seconds){
             --tstart.minutes;
@@ -56,11 +54,15 @@ public class Time {
             tstart.minutes += 60;
         }
 
+        if(tstop.hours > tstart.hours) tstart.hours+= 24;
+
 
         diff.minutes = tstart.minutes - tstop.minutes;
         diff.hours = tstart.hours - tstop.hours;
-        Log.d(Constants.TAG,start.toString());
+        /*Log.d(Constants.TAG,start.toString());
         Log.d(Constants.TAG,stop.toString());
+        Log.d(Constants.TAG,diff.toString());*/
+
         Log.d(Constants.TAG,diff.toString());
         return diff;
     }
@@ -74,6 +76,11 @@ public class Time {
         ret+=this.minutes*60*1000;
         ret+=this.hours*60*60*1000;
         return ret;
+    }
+    public static Time getTimeNow(){
+        Calendar ca = Calendar.getInstance();
+        return new Time(ca.get(Calendar.HOUR_OF_DAY),ca.get(Calendar.MINUTE),ca.get(Calendar.SECOND));
+
     }
     public String toString(){
         return hours+":"+minutes+":"+seconds;
