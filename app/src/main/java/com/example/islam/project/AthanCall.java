@@ -34,8 +34,10 @@ public class AthanCall {
         athanCall.append("&tune=").append(tuneString.substring(1, tuneString.length() - 2));
         athanCall.append("&adjustment=").append(builder.hijriAdj);
         Log.d(TAG,athanCall.toString());
+
         EntryActivity.saveParams(builder.athanParam);
-        Intent serviceCall = new Intent(MyApplication.getAppContext(),AthanCallService.class);
+
+        Intent serviceCall = new Intent(MyApplication.getAppContext(),AthanCallIntentService.class);
         serviceCall.putExtra(ATHAN_CALL, athanCall.toString());
         MyApplication.getAppContext().startService(serviceCall);
     }

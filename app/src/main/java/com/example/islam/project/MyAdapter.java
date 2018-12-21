@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,7 +19,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements PrayerElapsedSubject {
-    public static int nextPrayerIndex = 6;
+    public static int nextPrayerIndex = 3;
     private PrayerElapsedObserver observer;
     private List<String[]> mDataset;
     private Time left;
@@ -107,6 +108,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> imp
             case 0:
                 PrayerViewHolder pHolder = (PrayerViewHolder) holder;
                 customView = pHolder.mView;
+                if(nextPrayerIndex<Constants.PRAYERS_COUNT && nextPrayerIndex == position-1)
+                    customView.setBackgroundColor(ContextCompat.getColor(MyApplication.getAppContext(),R.color.colorPrimary));
                 TextView nameTxt = customView.findViewById(R.id.nameTxt);
                 TextView timeTxt = customView.findViewById(R.id.timeTxt);
                 nameTxt.setText(data[0]);
