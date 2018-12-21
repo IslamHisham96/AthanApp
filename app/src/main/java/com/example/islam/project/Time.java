@@ -16,6 +16,7 @@ public class Time {
         this.hours = hours;
         this.minutes = minutes;
         this.seconds = seconds;
+        Log.d(Constants.TAG, "Time now: "+hours+":"+minutes+":"+seconds);
     }
     public Time(Time t){
         hours = t.hours;
@@ -33,6 +34,19 @@ public class Time {
         seconds = (int) (milliseconds / 1000) % 60 ;
         minutes = (int) ((milliseconds / (1000*60)) % 60);
         hours   = (int) ((milliseconds / (1000*60*60)) % 24);
+    }
+
+    public void increment(){
+        seconds+=1;
+        if(seconds>=60) {
+            minutes++;
+            if (minutes >= 60) {
+                minutes = 0;
+                hours++;
+                if (hours >= 24)
+                    hours = 0;
+            }
+        }
     }
 
 
@@ -82,6 +96,8 @@ public class Time {
         return new Time(ca.get(Calendar.HOUR_OF_DAY),ca.get(Calendar.MINUTE),ca.get(Calendar.SECOND));
 
     }
+
+    @Override
     public String toString(){
         return hours+":"+minutes+":"+seconds;
     }

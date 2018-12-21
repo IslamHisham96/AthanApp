@@ -103,21 +103,21 @@ public class PrayerTimesFragment extends Fragment implements PrayerElapsedObserv
     }
 
     private void loadDayData(){
-        int start = (Calendar.getInstance().get(Calendar.DAY_OF_YEAR) - 1  + (debug?0:1)) * Constants.PRAYERS_COUNT;
+        int start = (Calendar.getInstance().get(Calendar.DAY_OF_YEAR) - 1  /*+ (debug?0:1) */) * Constants.PRAYERS_COUNT;
         mDataset = MyApplication.displayRecordSetFromTo(start, start + Constants.PRAYERS_COUNT);
         dateTxt.setText(DateUtils.formatHijriDate(mDataset.get(0)[2]));
         mDataset.add(null);
     }
     private Time timeToNextPrayer(){
         Time now = Time.getTimeNow();
-        now.seconds++;
-        /*
-        Log.d(Constants.TAG,"viewholder");
+        now.increment();
 
+        Log.d(Constants.TAG,"viewholder");
+        /*
         if(PrayerTimesFragment.debug) {
             Log.d(Constants.TAG,"viewholder debug");
-            now.hours = 18;
-            now.minutes = 24;
+            now.hours = 14;
+            now.minutes = 35;
             now.seconds = 55;
         }
         else{
@@ -142,6 +142,6 @@ public class PrayerTimesFragment extends Fragment implements PrayerElapsedObserv
         }
         String nextPrayer = (endOfDay)?"00:00":mDataset.get(nextPrayerIndex)[1];
         Log.d(Constants.TAG,"next prayer: "+nextPrayer);
-        return Time.difference(now, new Time(nextPrayer));
+        return Time.difference(Time.getTimeNow(), new Time(nextPrayer));
     }
 }
