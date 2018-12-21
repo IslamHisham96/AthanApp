@@ -72,26 +72,6 @@ public class TunesFragment extends Fragment {
         mListener = null;
     }
 
-    public static void setNumberPickerTextColor(NumberPicker numberPicker, int color)
-    {
 
-        try{
-            Field selectorWheelPaintField = numberPicker.getClass()
-                    .getDeclaredField("mSelectorWheelPaint");
-            selectorWheelPaintField.setAccessible(true);
-            ((Paint)selectorWheelPaintField.get(numberPicker)).setColor(color);
-        }
-        catch(Exception e){
-            Log.e(Constants.TAG, e.getMessage());
-        }
-
-        final int count = numberPicker.getChildCount();
-        for(int i = 0; i < count; i++){
-            View child = numberPicker.getChildAt(i);
-            if(child instanceof EditText)
-                ((EditText)child).setTextColor(color);
-        }
-        numberPicker.invalidate();
-    }
 
 }

@@ -63,8 +63,8 @@ public class PrayerTimesActicity extends MyActivity {
                         return true;
                     }
                 });
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.content_frame, tunesFragment).commit();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.content_frame, tunesFragment).commit();
     }
 
     @Override
@@ -102,14 +102,19 @@ public class PrayerTimesActicity extends MyActivity {
     }
 
 
-
     @Override
-    public void CalcMethodSet(int method) {
-
+    public void goToPrayerFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                .replace(fragmentFrame, prayerTimesFragment)
+                .commit();
     }
 
     @Override
-    public void LocationSet(Location location) {
-
+    public void goToTuneFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                .replace(fragmentFrame, tunesFragment)
+                .commit();
     }
 }
