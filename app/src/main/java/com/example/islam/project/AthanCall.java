@@ -23,7 +23,7 @@ public class AthanCall {
         athanCall.append("&adjustment=").append(builder.hijriAdj);
         Log.d(TAG,athanCall.toString());
 
-        MyApplication.saveParams(builder.athanParam);
+        MyApplication.saveParams(builder.athanParam); //TODO cake
 
         Intent serviceCall = new Intent(MyApplication.getAppContext(),AthanCallIntentService.class);
         serviceCall.putExtra(ATHAN_CALL, athanCall.toString());

@@ -1,4 +1,4 @@
-package com.example.islam.project;
+package com.example.islam.project.Adapters;
 
 import android.graphics.Color;
 import android.os.CountDownTimer;
@@ -12,15 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.islam.project.Constants;
 import com.example.islam.project.Fragments.PrayerTimesFragment;
+import com.example.islam.project.MyApplication;
 import com.example.islam.project.Observers.PrayerElapsedObserver;
 import com.example.islam.project.Observers.PrayerElapsedSubject;
+import com.example.islam.project.R;
+import com.example.islam.project.Time;
 
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements PrayerElapsedSubject {
+public class PrayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements PrayerElapsedSubject {
     private PrayerElapsedObserver observer;
     private List<String[]> mDataset;
     private Time left;
@@ -52,7 +56,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> imp
         }
     }
 
-    public MyAdapter(List<String[]> myDataset, PrayerElapsedObserver observer, Time timeLeft, int nextPrayerIndex) {
+    public PrayerAdapter(List<String[]> myDataset, PrayerElapsedObserver observer, Time timeLeft, int nextPrayerIndex) {
         mDataset = myDataset;
         this.observer = observer;
         left = timeLeft;

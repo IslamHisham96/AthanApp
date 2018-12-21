@@ -7,6 +7,8 @@ import android.database.Cursor;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.islam.project.Adapters.DBAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 

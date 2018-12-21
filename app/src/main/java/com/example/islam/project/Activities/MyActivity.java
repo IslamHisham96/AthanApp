@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -20,12 +21,15 @@ import com.example.islam.project.Constants;
 import com.example.islam.project.Fragments.CalcMethodFragment;
 import com.example.islam.project.Fragments.LoadingFragment;
 import com.example.islam.project.Fragments.OnFragmentInteractionListener;
+import com.example.islam.project.Observers.ParamsObserver;
+import com.example.islam.project.Observers.ParamsSubject;
 import com.example.islam.project.R;
 
-public abstract class MyActivity extends AppCompatActivity implements OnFragmentInteractionListener {
+public abstract class MyActivity extends AppCompatActivity implements OnFragmentInteractionListener, ParamsSubject {
     protected LoadingFragment loadingFragment;
     protected CalcMethodFragment calcMethodFragment;
     protected int fragmentFrame;
+    protected ParamsObserver observer;
     LocalBroadcastManager mLocalBroadcastManager;
     BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
 
@@ -81,8 +85,10 @@ public abstract class MyActivity extends AppCompatActivity implements OnFragment
 
     @Override
     public void goToLoadingFragment() {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+        loadingFragment.setLoadingMessage(getString(R.string.please_wait));
+        loadingFragment.setMode(false);
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
                 .replace(fragmentFrame, loadingFragment)
                 .commit();
     }
@@ -90,11 +96,61 @@ public abstract class MyActivity extends AppCompatActivity implements OnFragment
     @Override
     public void goToCalcMethodFragment() {
         //Log.d("MyTag","at3asha");
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
                 .replace(fragmentFrame, calcMethodFragment)
                 .commit();
     }
 
+    @Override
+    public void goToLocationSettingFrament() {
+        loadingFragment.setMode(true);
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                .replace(fragmentFrame, loadingFragment)
+                .commit();
+    }
 
+    @Override
+    public void goToPrayerFragment() {}
+
+    @Override
+    public void goToTuneFragment() {}
+
+    @Override
+    public void CalcMethodSet(int method) {
+        notifyWithUpdate(Constants.CALC_METHOD_OBSERVED, method);
+    }
+
+    @Override
+    public void LocationSet(Location location) {
+        //Log.d("MyTag","at3'ada");
+        notifyWithUpdate(Constants.LOCATION_OBSERVED, location.getLatitude()+","+location.getLongitude());
+        //Log.d("MyTag","after");
+    }
+
+    @Override
+    public void TunesSet(int[] tunes) {
+        notifyWithUpdate(Constants.TUNES_OBSERVED, tunes);
+    }
+
+    @Override
+    public void hijriAdjSet(int hijriAdj) {
+        notifyWithUpdate(Constants.HIJRI_ADJ_OBSERVED, hijriAdj);
+    }
+
+    @Override
+    public void yearSet(int year) {
+        notifyWithUpdate(Constants.YEAR_OBSERVED, year);
+    }
+
+    @Override
+    public void setObserver(ParamsObserver observer) {
+        this.observer = observer;
+    }
+
+    @Override
+    public void notifyWithUpdate(int id, Object update) {
+        observer.update(id, update);
+    }
 }

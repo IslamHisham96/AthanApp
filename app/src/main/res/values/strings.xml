@@ -52,4 +52,6 @@
     <string name="recalibrate_calcmethod">Change Calculation Method</string>
     <string name="nav_title">Change Settings</string>
     <string name="saved">Changes saved</string>
+    <string name="hijri_adj">Hijri day adjust</string>
+    <string name="set">Set</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.islam.project;
+package com.example.islam.project.Adapters;
 
 
 
@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-
+import com.example.islam.project.DBElement;
 
 
 public class DBAdapter {

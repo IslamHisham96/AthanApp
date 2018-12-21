@@ -20,10 +20,9 @@ import com.example.islam.project.Observers.ParamsSubject;
 import com.example.islam.project.R;
 
 
-public class MainActivity extends MyActivity implements ParamsSubject {
+public class MainActivity extends MyActivity {
 
     private CoordinatorLayout mainCoordinatorLayout;
-    private ParamsObserver observer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +34,7 @@ public class MainActivity extends MyActivity implements ParamsSubject {
         calcMethodFragment = new CalcMethodFragment();
         setObserver(new ParamsObserver(this));
         Log.d(Constants.TAG,"here");
-        loadingFragment.setMode(true);
-        goToLoadingFragment();
+        goToLocationSettingFrament();
     }
     @Override
     public void showLocationSettings() {
@@ -72,33 +70,20 @@ public class MainActivity extends MyActivity implements ParamsSubject {
 
 
     @Override
-    public void CalcMethodSet(int index) {
-        notifyWithUpdate(Constants.CALC_METHOD_OBSERVED, index);
+    public void CalcMethodSet(int method) {
+        super.CalcMethodSet(method);
         finishSettings();
     }
     @Override
     public void LocationSet(Location location) {
-        //Log.d("MyTag","at3'ada");
-        notifyWithUpdate(Constants.LOCATION_OBSERVED, location.getLatitude()+","+location.getLongitude());
-        //Log.d("MyTag","after");
-        //if(firstTime)
+        super.LocationSet(location);
         goToCalcMethodFragment();
     }
     public void finishSettings(){
-        loadingFragment.setLoadingMessage(getString(R.string.please_wait));
-        loadingFragment.setMode(false);
         goToLoadingFragment();
         MyApplication.setFirst(false);
         observer.sendRequest();
     }
 
-    @Override
-    public void setObserver(ParamsObserver observer) {
-        this.observer = observer;
-    }
 
-    @Override
-    public void notifyWithUpdate(int id, Object update) {
-        observer.update(id, update);
-    }
 }

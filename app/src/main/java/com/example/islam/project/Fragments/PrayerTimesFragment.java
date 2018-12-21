@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.example.islam.project.Constants;
 import com.example.islam.project.DateUtils;
-import com.example.islam.project.MyAdapter;
+import com.example.islam.project.Adapters.PrayerAdapter;
 import com.example.islam.project.MyApplication;
 import com.example.islam.project.Observers.PrayerElapsedObserver;
 import com.example.islam.project.Observers.PrayerElapsedSubject;
@@ -29,7 +29,7 @@ import java.util.List;
 
 public class PrayerTimesFragment extends Fragment implements PrayerElapsedObserver {
     private RecyclerView mRecyclerView;
-    private MyAdapter mAdapter;
+    private PrayerAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private TextView dateTxt;
     private List<String[]> mDataset;
@@ -62,7 +62,7 @@ public class PrayerTimesFragment extends Fragment implements PrayerElapsedObserv
         loadDayData();
         Log.d(Constants.TAG, Arrays.toString(mDataset.get(0)));
         Log.d(Constants.TAG, mDataset.size()+"");
-        mAdapter = new MyAdapter(mDataset, this, timeToNextPrayer(), nextPrayerIndex);
+        mAdapter = new PrayerAdapter(mDataset, this, timeToNextPrayer(), nextPrayerIndex);
         mRecyclerView.setAdapter(mAdapter);
         return v;
     }
@@ -97,7 +97,7 @@ public class PrayerTimesFragment extends Fragment implements PrayerElapsedObserv
         //debug = false;
         if(endOfDay)
             loadDayData();
-        mAdapter = new MyAdapter(mDataset, this, timeToNextPrayer(), nextPrayerIndex);
+        mAdapter = new PrayerAdapter(mDataset, this, timeToNextPrayer(), nextPrayerIndex);
         if(mRecyclerView!=null)
             mRecyclerView.setAdapter(mAdapter);
     }

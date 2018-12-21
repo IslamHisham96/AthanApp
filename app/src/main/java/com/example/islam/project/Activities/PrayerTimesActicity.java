@@ -18,12 +18,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.islam.project.Fragments.PrayerTimesFragment;
+import com.example.islam.project.Fragments.TunesFragment;
 import com.example.islam.project.R;
 
 public class PrayerTimesActicity extends MyActivity {
     private DrawerLayout mDrawerLayout;
     private CoordinatorLayout prayersCoordinatorLayout;
     private PrayerTimesFragment prayerTimesFragment;
+    private TunesFragment tunesFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class PrayerTimesActicity extends MyActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
         prayerTimesFragment = new PrayerTimesFragment();
+        tunesFragment = new TunesFragment();
         mDrawerLayout = findViewById(R.id.drawer_layout);
         fragmentFrame = R.id.content_frame;
         prayersCoordinatorLayout = findViewById(R.id.prayersCoordinatorLayout);
@@ -61,7 +64,7 @@ public class PrayerTimesActicity extends MyActivity {
                     }
                 });
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.content_frame, prayerTimesFragment).commit();
+        fragmentTransaction.add(R.id.content_frame, tunesFragment).commit();
     }
 
     @Override
