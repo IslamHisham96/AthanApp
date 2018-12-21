@@ -5,12 +5,25 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.util.Log;
+import android.widget.Toast;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.islam.project.Constants.MY_PREFS_NAME;
+import static com.example.islam.project.Constants.UPDATE_CALC_METHOD;
+import static com.example.islam.project.Constants.UPDATE_HIJRI_ADJ;
+import static com.example.islam.project.Constants.UPDATE_LOCATION;
+import static com.example.islam.project.Constants.UPDATE_TUNES;
+import static com.example.islam.project.Constants.UPDATE_YEAR;
+import static com.example.islam.project.Constants.calcMethod;
+import static com.example.islam.project.Constants.hijriAdj;
+import static com.example.islam.project.Constants.latitude;
+import static com.example.islam.project.Constants.location;
+import static com.example.islam.project.Constants.longitude;
+import static com.example.islam.project.Constants.tune;
+import static com.example.islam.project.Constants.tuneString;
+import static com.example.islam.project.Constants.year;
 
 public class MyApplication extends Application {
     private static Context context;
@@ -21,6 +34,7 @@ public class MyApplication extends Application {
         super.onCreate();
         MyApplication.context = getApplicationContext();
         sharedPreferences = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        readParams();
         openDB();
     }
 
@@ -88,5 +102,38 @@ public class MyApplication extends Application {
         }
         cursor.close();
         return myDataset;
+    }
+
+    public static void readParams(){
+        calcMethod = sharedPreferences.getInt(UPDATE_CALC_METHOD, calcMethod);
+        hijriAdj = sharedPreferences.getInt(UPDATE_HIJRI_ADJ, hijriAdj);
+        location = sharedPreferences.getString(UPDATE_LOCATION, location);
+        String [] temp = location.split(",");
+        latitude = Double.parseDouble(temp[0]);
+        longitude = Double.parseDouble(temp[1]);
+        year = sharedPreferences.getInt(UPDATE_YEAR, year);
+        tuneString = sharedPreferences.getString(UPDATE_TUNES,tuneString);
+        tune = AthanCallParams.setTuneFromString(tuneString);
+    }
+    public static void saveParams(AthanCallParams params){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(UPDATE_CALC_METHOD,calcMethod = params.getCalc_method());
+        editor.putInt(UPDATE_HIJRI_ADJ,hijriAdj = params.getHijri_adj());
+        editor.putString(UPDATE_LOCATION,params.getLocation());
+        latitude = params.getLatitude();
+        longitude = params.getLongitude();
+        editor.putInt(UPDATE_YEAR,params.getYear());
+        tuneString = params.getTuneString();
+        editor.putString(UPDATE_TUNES,tuneString);
+        tune = params.getTune();
+        editor.apply();
+        Toast.makeText(getAppContext(),R.string.saved,Toast.LENGTH_SHORT).show();
+    }
+
+    public static boolean getFirst(){
+        return sharedPreferences.getBoolean(Constants.FIRST_TIME, true);
+    }
+    public static void setFirst(boolean first){
+        sharedPreferences.edit().putBoolean(Constants.FIRST_TIME, first).apply();
     }
 }

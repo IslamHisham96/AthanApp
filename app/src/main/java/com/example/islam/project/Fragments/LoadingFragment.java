@@ -21,8 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.islam.project.Constants;
-import com.example.islam.project.MyActivity;
-import com.example.islam.project.OnFragmentInteractionListener;
+import com.example.islam.project.Activities.MyActivity;
 import com.example.islam.project.R;
 
 import static android.content.Context.LOCATION_SERVICE;
@@ -41,6 +40,7 @@ public class LoadingFragment extends Fragment implements LocationListener {
     private LocationManager locationManager;
     private MyActivity activity;
     private boolean enable_pos = false;
+    private boolean mode_gps = true;
 
     public LoadingFragment() {
     }
@@ -59,7 +59,6 @@ public class LoadingFragment extends Fragment implements LocationListener {
         if (getArguments() != null) {
             loadingMessage = getArguments().getString(ARG_PARAM1);
         }
-        Log.d("MyTag","oncreate");
 
     }
 
@@ -67,7 +66,6 @@ public class LoadingFragment extends Fragment implements LocationListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        Log.d(Constants.TAG,"hey man");
         View v = inflater.inflate(R.layout.fragment_loading, container, false);
         loadingTextView = v.findViewById(R.id.loadingTextView);
         loadingTextView.setText(loadingMessage);
@@ -91,12 +89,13 @@ public class LoadingFragment extends Fragment implements LocationListener {
                     + " must implement MyActivity");
         }
         locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
-        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            setLoadingMessage(getResources().getString(R.string.waiting_location));
-            activity.showLocationSettings();
+        if(mode_gps) {
+            if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                setLoadingMessage(getResources().getString(R.string.waiting_location));
+                activity.showLocationSettings();
+            } else
+                checkPermissions();
         }
-        else
-            checkPermissions();
     }
     public void loadingComplete(){
         loadingProgressBar.setVisibility(View.INVISIBLE);
@@ -108,6 +107,9 @@ public class LoadingFragment extends Fragment implements LocationListener {
         this.loadingMessage = loadingMessage;
         if(loadingTextView!=null)
             loadingTextView.setText(loadingMessage);
+    }
+    public void setMode(boolean mode){
+        this.mode_gps = mode;
     }
 
     @Override
@@ -121,7 +123,7 @@ public class LoadingFragment extends Fragment implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         if (enable_pos) {
-            Log.d("MyTag","location dude");
+            Log.d(Constants.TAG,"location dude");
             loadingComplete();
             mListener.LocationSet(location);
             enable_pos = false;
@@ -164,13 +166,13 @@ public class LoadingFragment extends Fragment implements LocationListener {
                 }
             }
         }
-        Log.d("MyTag",permissions+" done");
+        Log.d(Constants.TAG,permissions+" done");
         return permissions;
     }
 
     @Override
     public void onProviderEnabled(String provider) {
-        if (provider.equals(LocationManager.GPS_PROVIDER)) {
+        if (mode_gps && provider.equals(LocationManager.GPS_PROVIDER)) {
             checkPermissions();
         }
     }

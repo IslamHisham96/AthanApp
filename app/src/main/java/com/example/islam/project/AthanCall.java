@@ -3,20 +3,8 @@ package com.example.islam.project;
 import android.content.Intent;
 import android.util.Log;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.islam.project.Activities.EntryActivity;
-
 import static com.example.islam.project.Constants.ATHAN_CALL;
-import static com.example.islam.project.Constants.DATA;
-import static com.example.islam.project.Constants.STATUS;
 import static com.example.islam.project.Constants.TAG;
-import static com.example.islam.project.Constants.TIMINGS;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Arrays;
 
@@ -35,7 +23,7 @@ public class AthanCall {
         athanCall.append("&adjustment=").append(builder.hijriAdj);
         Log.d(TAG,athanCall.toString());
 
-        EntryActivity.saveParams(builder.athanParam);
+        MyApplication.saveParams(builder.athanParam);
 
         Intent serviceCall = new Intent(MyApplication.getAppContext(),AthanCallIntentService.class);
         serviceCall.putExtra(ATHAN_CALL, athanCall.toString());
@@ -51,7 +39,7 @@ public class AthanCall {
         private int year;
         private int hijriAdj;
         private int[] tune;
-        private AthanParams athanParam;
+        private AthanCallParams athanParam;
         public AthanCallBuilder() {
             calcMethod = Constants.calcMethod;
             latitude = Constants.latitude;
@@ -88,7 +76,7 @@ public class AthanCall {
         }
 
         public AthanCall build() {
-            athanParam = new AthanParams(year,calcMethod,hijriAdj,longitude,latitude,tune);
+            athanParam = new AthanCallParams(year,calcMethod,hijriAdj,longitude,latitude,tune);
             return new AthanCall(this);
         }
     }

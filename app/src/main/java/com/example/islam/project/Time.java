@@ -23,12 +23,12 @@ public class Time {
     }
     public Time(String time){
         String[] splitTime = time.split(":");
-        Log.d("MyTag",Arrays.toString(splitTime));
+        Log.d(Constants.TAG,Arrays.toString(splitTime));
         hours = Integer.parseInt(splitTime[0]);
         minutes = Integer.parseInt(splitTime[1]);
         if(splitTime.length>2)
             seconds = Integer.parseInt(splitTime[2]);
-        Log.d("MyTag",this.toString());
+        Log.d(Constants.TAG,this.toString());
     }
     public Time(long milliseconds){
         seconds = (int) (milliseconds / 1000) % 60 ;
@@ -59,9 +59,9 @@ public class Time {
 
         diff.minutes = tstart.minutes - tstop.minutes;
         diff.hours = tstart.hours - tstop.hours;
-        Log.d("MyTag",start.toString());
-        Log.d("MyTag",stop.toString());
-        Log.d("MyTag",diff.toString());
+        Log.d(Constants.TAG,start.toString());
+        Log.d(Constants.TAG,stop.toString());
+        Log.d(Constants.TAG,diff.toString());
         return diff;
     }
     public static long differenceInMillis(Time start, Time stop){

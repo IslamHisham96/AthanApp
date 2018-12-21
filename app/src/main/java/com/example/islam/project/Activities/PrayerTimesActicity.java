@@ -11,20 +11,16 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.islam.project.Fragments.PrayerTimesFragment;
-import com.example.islam.project.MyActivity;
-import com.example.islam.project.OnFragmentInteractionListener;
 import com.example.islam.project.R;
 
-public class PrayerTimesActicity extends AppCompatActivity implements MyActivity, OnFragmentInteractionListener {
+public class PrayerTimesActicity extends MyActivity {
     private DrawerLayout mDrawerLayout;
     private CoordinatorLayout prayersCoordinatorLayout;
     private PrayerTimesFragment prayerTimesFragment;
@@ -39,6 +35,7 @@ public class PrayerTimesActicity extends AppCompatActivity implements MyActivity
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
         prayerTimesFragment = new PrayerTimesFragment();
         mDrawerLayout = findViewById(R.id.drawer_layout);
+        fragmentFrame = R.id.content_frame;
         prayersCoordinatorLayout = findViewById(R.id.prayersCoordinatorLayout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
@@ -101,15 +98,7 @@ public class PrayerTimesActicity extends AppCompatActivity implements MyActivity
         snackbar.show();
     }
 
-    @Override
-    public void goToLoadingFragment() {
 
-    }
-
-    @Override
-    public void goToCalcMethodFragment() {
-
-    }
 
     @Override
     public void CalcMethodSet(int method) {

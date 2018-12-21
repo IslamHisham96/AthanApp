@@ -2,18 +2,19 @@ package com.example.islam.project;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.RequestFuture;
 import com.example.islam.project.Activities.PrayerTimesActicity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.concurrent.TimeUnit;
 
 import static com.example.islam.project.Constants.TAG;
 import static com.example.islam.project.Constants.TIMINGS;
@@ -33,10 +34,10 @@ public class AthanCallIntentService extends IntentService {
             Bundle bundle = intent.getExtras();
             if (bundle == null) return;
             String athanCall = bundle.getString(Constants.ATHAN_CALL);
+            RequestFuture<JSONObject> future = RequestFuture.newFuture();
+            JsonObjectRequest request = new JsonObjectRequest(athanCall, null, future, future);
 
-            JsonObjectRequest request = new JsonObjectRequest(athanCall, null,
-
-                    new Response.Listener<JSONObject>() {
+                   /* new Response.Listener<JSONObject>() {
                         @Override
 
                         public void onResponse(JSONObject result) {
@@ -53,17 +54,29 @@ public class AthanCallIntentService extends IntentService {
                             Log.e(TAG, "onErrorResponse: Error= " + error);
                             Log.e(TAG, "onErrorResponse: Error= " + error.getMessage());
                         }
-                    });
+                    });*/
             RequestQueueSingleton.getInstance(null).addToRequestQueue(request);
+            JSONObject result = future.get(Constants.TIMEOUT, TimeUnit.SECONDS);
+            Log.d(Constants.TAG, "date get");
+            MyApplication.deleteAllRecords();
+            parseAthanResults(result);
+            startIntent();
         }
         catch (Exception ex){
             Log.e(Constants.TAG,"Error in service");
+            ex.printStackTrace();
         }
     }
 
     public void startIntent(){
+        LocalBroadcastManager localBroadcastManager = LocalBroadcastManager
+                .getInstance(this);
+        localBroadcastManager.sendBroadcast(new Intent(
+                Constants.ACTION_CLOSE));
+
         Intent i = new Intent(getApplicationContext(), PrayerTimesActicity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
         startActivity(i);
     }
     public void parseAthanResults(JSONObject result){
@@ -75,8 +88,8 @@ public class AthanCallIntentService extends IntentService {
                 String [] names = MyApplication.getAppContext().getResources().getStringArray(R.array.prayers);
                 for(int i = 1;i <= 12;i++){
                     JSONArray month = data.getJSONArray(i+"");
-                    int daysinMonth = DateUtils.getDaysinMonth(i, year);
-                    for(int j=0;j<daysinMonth;j++){
+                    int daysInMonth = DateUtils.getDaysInMonth(i, year);
+                    for(int j=0;j<daysInMonth;j++){
                         JSONObject object = month.getJSONObject(j);
                         String date = object.getJSONObject("date").getJSONObject("hijri").getString("date");
                         JSONObject timings = object.getJSONObject("timings");

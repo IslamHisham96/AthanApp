@@ -123,7 +123,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> imp
                 final TextView minutesTxt = customView.findViewById(R.id.minutesTxt);
                 final TextView secondsTxt = customView.findViewById(R.id.secondsTxt);
                 String nextPrayer = (position==mDataset.size()-1)?"00:00":mDataset.get(position)[1];
-                Log.d("MyTag","next prayer: "+nextPrayer);
+                Log.d(Constants.TAG,"next prayer: "+nextPrayer);
                 left = Time.difference(new Time("17:00"),new Time(nextPrayer));
                 hoursTxt.setText(String.format(Locale.US,"%02d",left.hours));
                 minutesTxt.setText(String.format(Locale.US,"%02d",left.minutes));

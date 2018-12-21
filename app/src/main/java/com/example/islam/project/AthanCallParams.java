@@ -2,12 +2,12 @@ package com.example.islam.project;
 
 import java.util.Arrays;
 
-public class AthanParams {
+public class AthanCallParams {
     private int year, calc_method, hijri_adj;
     private double longitude, latitude;
     private int[] tune;
 
-    public AthanParams(int year, int calc_method, int hijri_adj, double longitude, double latitude, int[] tune) {
+    public AthanCallParams(int year, int calc_method, int hijri_adj, double longitude, double latitude, int[] tune) {
         this.year = year;
         this.calc_method = calc_method;
         this.hijri_adj = hijri_adj;

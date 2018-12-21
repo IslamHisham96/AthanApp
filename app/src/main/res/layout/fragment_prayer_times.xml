@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="12-3-2019"
-        android:textSize="50sp" />
+        android:textAlignment="center"
+        android:textSize="35sp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/prayersRecyclerView"

@@ -2,14 +2,15 @@
     <string name="app_name">Project</string>
     <string name="location_error">Location Error: GPS Disabled!</string>
     <string name="enable">Enable</string>
+    <string name="please_wait">Please Wait&#8230;</string>
     <string name="permissions_not_granted">Permissions not granted</string>
     <string name="ok">OK</string>
     <string name="location_permissions_message">Location is needed to find your country for prayer times</string>
     <string name="permissions_title">Permission needed!</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading&#8230;</string>
     <string name="location_got">Location got</string>
     <string name="waiting_location">Please Enable Location from Settings</string>
-    <string name="waiting_permissions">Checking Permissions...</string>
+    <string name="waiting_permissions">Checking Permissions&#8230;</string>
     <string-array name="calc_methods">
         <item>University of Islamic Sciences, Karachi</item>
         <item>Islamic Society of North America</item>

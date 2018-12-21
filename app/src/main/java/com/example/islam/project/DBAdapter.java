@@ -116,14 +116,7 @@ public class DBAdapter {
 
     // Delete all records
     public void deleteAll() {
-        Cursor c = getAllRows();
-        long rowId = c.getColumnIndexOrThrow(KEY_ROWID);
-        if (c.moveToFirst()) {
-            do {
-                deleteRow(c.getLong((int) rowId));
-            } while (c.moveToNext());
-        }
-        c.close();
+        db.execSQL("delete from "+ DATABASE_TABLE);
     }
 
     // Return all rows in the database.

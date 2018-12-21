@@ -25,10 +25,6 @@
         <activity android:name=".Activities.PrayerTimesActicity" />
 
         <service
-            android:name=".AthanCallService"
-            android:enabled="true"
-            android:exported="true" />
-        <service
             android:name=".AthanCallIntentService"
             android:exported="false"></service>
     </application>

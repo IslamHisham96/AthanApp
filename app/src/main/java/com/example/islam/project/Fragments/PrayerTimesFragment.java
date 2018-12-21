@@ -1,8 +1,6 @@
 package com.example.islam.project.Fragments;
 
-import android.app.Application;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -20,7 +18,6 @@ import com.example.islam.project.MyAdapter;
 import com.example.islam.project.MyApplication;
 import com.example.islam.project.Observers.PrayerElapsedObserver;
 import com.example.islam.project.Observers.PrayerElapsedSubject;
-import com.example.islam.project.OnFragmentInteractionListener;
 import com.example.islam.project.R;
 
 import java.util.Arrays;
@@ -54,7 +51,6 @@ public class PrayerTimesFragment extends Fragment implements PrayerElapsedObserv
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        Log.d("MyTag","her now");
         View v = inflater.inflate(R.layout.fragment_prayer_times, container, false);
         mRecyclerView = v.findViewById(R.id.prayersRecyclerView);
         dateTxt = v.findViewById(R.id.dateTxt);
@@ -66,11 +62,10 @@ public class PrayerTimesFragment extends Fragment implements PrayerElapsedObserv
         mDataset = MyApplication.displayRecordSetFromTo(start, start + Constants.TIMINGS.length);
         dateTxt.setText(DateUtils.formatHijriDate(mDataset.get(0)[2]));
         mDataset.add(null);
-        Log.d("MyTag", Arrays.toString(mDataset.get(0)));
-        Log.d("MyTag", mDataset.size()+"");
+        Log.d(Constants.TAG, Arrays.toString(mDataset.get(0)));
+        Log.d(Constants.TAG, mDataset.size()+"");
         mAdapter = new MyAdapter(mDataset, this);
         mRecyclerView.setAdapter(mAdapter);
-        Log.d("MyTag","you are a rockstar");
         return v;
     }
 

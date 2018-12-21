@@ -1,4 +1,4 @@
-package com.example.islam.project;
+package com.example.islam.project.Fragments;
 
 import android.location.Location;
 
