@@ -48,27 +48,10 @@ public class LoadingFragment extends Fragment implements LocationListener {
     public LoadingFragment() {
     }
 
-    // TODO: Rename and change types and number of parameters
-    public static LoadingFragment newInstance(String param1, String param2) {
-        LoadingFragment fragment = new LoadingFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            loadingMessage = getArguments().getString(ARG_PARAM1);
-        }
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_loading, container, false);
         loadingTextView = v.findViewById(R.id.loadingTextView);
@@ -114,6 +97,9 @@ public class LoadingFragment extends Fragment implements LocationListener {
         this.loadingMessage = loadingMessage;
         if (loadingTextView != null)
             loadingTextView.setText(loadingMessage);
+        if(loadingProgressBar != null)
+            loadingProgressBar.setVisibility(View.VISIBLE);
+
     }
 
     public void setMode(boolean mode) {
@@ -229,7 +215,7 @@ public class LoadingFragment extends Fragment implements LocationListener {
                 continue;
             }
             if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
-                // Found best last known location: %s", l);
+                // Found best last known location: l
                 bestLocation = l;
                 bestProvider = provider;
             }

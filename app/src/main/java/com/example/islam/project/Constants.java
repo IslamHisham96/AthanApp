@@ -18,7 +18,7 @@ public class Constants {
     public static final int TUNES_OBSERVED = 4;
     public static final int PRAYERS_COUNT = 6;
     public static final int MIN_DISTANCE_CHANGE_FOR_UPDATES = 0;
-    public static final int MIN_TIME_BW_UPDATES =  100;
+    public static final int MIN_TIME_BW_UPDATES =  0;
     public static final int MIN_TUNE = -10;
     public static final int MAX_TUNE = 10;
     public static final String[] TIMINGS = new String[]{"Fajr","Sunrise","Dhuhr","Asr","Maghrib","Isha"};
