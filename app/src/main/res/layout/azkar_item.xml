@@ -2,8 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/custom_border">
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:background="@drawable/custom_border"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/numberTxt"
@@ -30,8 +32,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="أَسْـتَغْفِرُ الله،  أَسْـتَغْفِرُ الله،  أَسْـتَغْفِرُ الله."
-        android:textSize="16sp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/pronounceTxt"
@@ -49,8 +51,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Astagfirullah, Astagfirullah, Astagfirullah"
-        android:textSize="16sp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/langTxt"
@@ -68,8 +70,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="I ask Allah to forgive me"
-        android:textSize="16sp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/referenceTxt"
@@ -77,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
-        android:textAlignment="textEnd"
         android:layout_marginBottom="10dp"
-        android:text="Sahih Muslim 1/414" />
+        android:text="Sahih Muslim 1/414"
+        android:textAlignment="textEnd" />
 </LinearLayout>
