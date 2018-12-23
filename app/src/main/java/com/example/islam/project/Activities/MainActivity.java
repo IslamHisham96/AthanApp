@@ -37,7 +37,7 @@ public class MainActivity extends MyActivity {
                 if(intent.getAction().equals(Constants.ACTION_CALL_SUCCESS)){
                     observer.saveParams();
                     MyApplication.setFirst(false);
-                    Intent i = new Intent(getApplicationContext(), PrayerTimesActicity.class);
+                    Intent i = new Intent(getApplicationContext(), PrayerTimesActivity.class);
                     startActivity(i);
                     finish();
                 }

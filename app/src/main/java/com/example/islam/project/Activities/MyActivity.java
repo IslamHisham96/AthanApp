@@ -39,7 +39,7 @@ public abstract class MyActivity extends AppCompatActivity implements OnFragment
         mLocalBroadcastManager.registerReceiver(mBroadcastReceiver, mIntentFilter);
     }
     public void serviceFailed(){
-        Toast.makeText(this, R.string.service_failed, Toast.LENGTH_LONG);
+        Toast.makeText(this, R.string.service_failed, Toast.LENGTH_LONG).show();
     }
     @Override
     public void finishSettings(){
@@ -85,15 +85,7 @@ public abstract class MyActivity extends AppCompatActivity implements OnFragment
         loadingFragment.checkPermissions();
     }
 
-    @Override
-    public void goToLoadingFragment() {
-        loadingFragment.setLoadingMessage(getString(R.string.please_wait));
-        loadingFragment.setMode(false);
-        getSupportFragmentManager().beginTransaction()
-                .setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                .replace(fragmentFrame, loadingFragment)
-                .commit();
-    }
+
 
     @Override
     public void goToCalcMethodFragment() {
@@ -104,6 +96,15 @@ public abstract class MyActivity extends AppCompatActivity implements OnFragment
                 .commit();
     }
 
+    @Override
+    public void goToLoadingFragment() {
+        loadingFragment.setLoadingMessage(getString(R.string.please_wait));
+        loadingFragment.setMode(false);
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                .replace(fragmentFrame, loadingFragment)
+                .commit();
+    }
     @Override
     public void goToLocationSettingFrament() {
         loadingFragment.setMode(true);
@@ -157,5 +158,9 @@ public abstract class MyActivity extends AppCompatActivity implements OnFragment
     @Override
     public void notifyWithUpdate(int id, Object update) {
         observer.update(id, update);
+    }
+
+    public int getFragmentFrame(){
+        return fragmentFrame;
     }
 }

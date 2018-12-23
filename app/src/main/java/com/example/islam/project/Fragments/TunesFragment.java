@@ -24,7 +24,7 @@ import com.example.islam.project.R;
 import java.lang.reflect.Field;
 
 
-public class TunesFragment extends Fragment {
+public class TunesFragment extends MyFragment {
 
     private OnFragmentInteractionListener mListener;
     private RecyclerView mRecyclerView;
@@ -96,5 +96,8 @@ public class TunesFragment extends Fragment {
     }
 
 
-
+    @Override
+    protected int getTitleID() {
+        return R.string.tunes_title;
+    }
 }

@@ -23,7 +23,7 @@ public class EntryActivity extends AppCompatActivity {
             finish();
         }
         else{
-            Intent intent = new Intent(this, PrayerTimesActicity.class);
+            Intent intent = new Intent(this, PrayerTimesActivity.class);
             Log.d(Constants.TAG,"hello2");
             startActivity(intent);
             finish();

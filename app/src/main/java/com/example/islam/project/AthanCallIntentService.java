@@ -54,12 +54,14 @@ public class AthanCallIntentService extends IntentService {
                             Log.e(TAG, "onErrorResponse: Error= " + error.getMessage());
                         }
                     });*/
+            Log.d(Constants.TAG, "adding to queue");
             RequestQueueSingleton.getInstance(null).addToRequestQueue(request);
+            Log.d(Constants.TAG, "request added");
             JSONObject result = future.get(Constants.TIMEOUT, TimeUnit.SECONDS);
             Log.d(Constants.TAG, "date get");
             MyApplication.deleteAllRecords();
             parseAthanResults(result);
-            startIntent();
+            serviceSuccess();
         }
         catch (Exception ex){
             Log.e(Constants.TAG,"Error in service");
@@ -68,7 +70,7 @@ public class AthanCallIntentService extends IntentService {
         }
     }
 
-    public void startIntent(){
+    public void serviceSuccess(){
         LocalBroadcastManager localBroadcastManager = LocalBroadcastManager
                 .getInstance(this);
         localBroadcastManager.sendBroadcast(new Intent(

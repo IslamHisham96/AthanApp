@@ -11,7 +11,7 @@ import android.widget.Spinner;
 import com.example.islam.project.R;
 
 
-public class CalcMethodFragment extends Fragment {
+public class CalcMethodFragment extends MyFragment {
     private OnFragmentInteractionListener mListener;
 
     public CalcMethodFragment() {
@@ -54,6 +54,8 @@ public class CalcMethodFragment extends Fragment {
     }
 
 
-
-
+    @Override
+    protected int getTitleID() {
+        return R.string.calcmethod_title;
+    }
 }

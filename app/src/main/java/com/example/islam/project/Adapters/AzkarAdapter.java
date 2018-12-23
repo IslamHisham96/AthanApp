@@ -19,7 +19,7 @@ public class AzkarAdapter extends RecyclerView.Adapter<AzkarAdapter.AzkarViewHol
     private String[] pronunciation;
     private String[] references;
     private String[] language;
-
+    private AzkarParam param;
     public static class AzkarViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public View mView;
@@ -29,6 +29,7 @@ public class AzkarAdapter extends RecyclerView.Adapter<AzkarAdapter.AzkarViewHol
         }
     }
     public AzkarAdapter(AzkarParam param) {
+        this.param = param;
         Resources r = MyApplication.getAppContext().getResources();
         arabic = r.getStringArray(param.getArabicArrayID());
         pronunciation = r.getStringArray(param.getPronunciationArrayID());

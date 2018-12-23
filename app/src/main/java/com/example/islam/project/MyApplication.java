@@ -16,9 +16,8 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.islam.project.Activities.PrayerTimesActicity;
+import com.example.islam.project.Activities.PrayerTimesActivity;
 import com.example.islam.project.Adapters.DBAdapter;
-import com.example.islam.project.Fragments.PrayerTimesFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -161,7 +160,7 @@ public class MyApplication extends Application {
     }
 
     public static int playNotification(String textTitle, String textContent, Context ctx){
-        Intent intent = new Intent(ctx, PrayerTimesActicity.class);
+        Intent intent = new Intent(ctx, PrayerTimesActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(ctx, CHANNEL_ID)

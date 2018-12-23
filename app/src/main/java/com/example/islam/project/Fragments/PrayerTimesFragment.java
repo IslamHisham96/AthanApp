@@ -27,7 +27,7 @@ import java.util.List;
 
 
 
-public class PrayerTimesFragment extends Fragment implements PrayerElapsedObserver {
+public class PrayerTimesFragment extends MyFragment implements PrayerElapsedObserver {
     private RecyclerView mRecyclerView;
     private PrayerAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -46,6 +46,11 @@ public class PrayerTimesFragment extends Fragment implements PrayerElapsedObserv
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected int getTitleID() {
+        return R.string.prayers_title;
     }
 
     @Override

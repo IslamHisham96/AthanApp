@@ -16,7 +16,7 @@ public class Time {
         this.hours = hours;
         this.minutes = minutes;
         this.seconds = seconds;
-        Log.d(Constants.TAG, "Time now: "+hours+":"+minutes+":"+seconds);
+        //Log.d(Constants.TAG, "Time now: "+hours+":"+minutes+":"+seconds);
     }
     public Time(Time t){
         hours = t.hours;
@@ -77,7 +77,7 @@ public class Time {
         Log.d(Constants.TAG,stop.toString());
         Log.d(Constants.TAG,diff.toString());*/
 
-        Log.d(Constants.TAG,diff.toString());
+        //Log.d(Constants.TAG,diff.toString());
         return diff;
     }
     public static long differenceInMillis(Time start, Time stop){

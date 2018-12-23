@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +14,11 @@ import android.widget.TextView;
 
 import com.example.islam.project.Adapters.AzkarAdapter;
 import com.example.islam.project.AzkarParam;
+import com.example.islam.project.Constants;
 import com.example.islam.project.R;
 
 
-public class AzkarFragment extends Fragment {
+public class AzkarFragment extends MyFragment {
 
     private OnFragmentInteractionListener mListener;
     private String title;
@@ -38,6 +40,7 @@ public class AzkarFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(), ((LinearLayoutManager)mLayoutManager).getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
+        Log.d(Constants.TAG, "Azkarparam: "+ (param==null?"null":"not null"));
         mAdapter = new AzkarAdapter(param);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setFocusable(false);
@@ -69,5 +72,10 @@ public class AzkarFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    protected int getTitleID() {
+        return R.string.supplications_title;
     }
 }

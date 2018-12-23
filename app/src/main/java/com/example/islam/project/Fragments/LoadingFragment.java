@@ -29,7 +29,7 @@ import java.util.List;
 
 import static android.content.Context.LOCATION_SERVICE;
 
-public class LoadingFragment extends Fragment implements LocationListener {
+public class LoadingFragment extends MyFragment implements LocationListener {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     public static int PERMISSIONS_REQUEST_TAG = 88;
@@ -222,4 +222,10 @@ public class LoadingFragment extends Fragment implements LocationListener {
         }
         return new Object[] {bestLocation, bestProvider};
     }
+
+    @Override
+    protected int getTitleID() {
+        return mode_gps ? R.string.location_title : R.string.loading_title;
+    }
+
 }

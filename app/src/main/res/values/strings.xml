@@ -1,8 +1,15 @@
 <resources>
+    <string name="app_name">Project</string>
+    <string name="loading_title">Loading</string>
+    <string name="location_title">Loading</string>
+    <string name="prayers_title">Prayer Times</string>
+    <string name="calcmethod_title">Calculation Method</string>
+    <string name="tunes_title">Manual Adjustements</string>
+    <string name="supplications_title">Supplications</string>
+
     <string name="channel_name">com.example.islam.project.channel_name</string>
     <string name="channel_description">com.example.islam.project.channel_description</string>
 
-    <string name="app_name">Project</string>
     <string name="location_error">Location Error: GPS Disabled!</string>
     <string name="enable">Enable</string>
     <string name="please_wait">Please Wait&#8230;</string>
