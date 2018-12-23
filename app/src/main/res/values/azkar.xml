@@ -4,24 +4,43 @@
         <item> Astagfirullah, Astagfirullah, Astagfirullah </item>
         <item> Allahumma antas salaam wa min kas salaam taba rakta ya dhal ja laa li wal ik raam</item>
         <item>  Allahumma a\'inni ala dhikrika wa shukrika wa husni ibadatika (x3)</item>
+        <item>La ilaha illa allahu wah dahu la shareeka laahu, lahul mulku wa lahul hamdu, wa huwa \'ala kullee shay\'in qadeer, La hawla wa laqu-aata illah billah, la ilaha illAllah wala na\'budu illayyah, lahun-ni\'matu, wa lahul fadl, wa lahu-saana ul hasanu, la ilaha illAllahhu mukhliseena lahudeen, wa law karihal kafiroon</item>
+        <item> Sub-han Allah (x33)\n
+Alhamdu lillah (x33)\n
+Allah hu Akbar (x33)\n
+Laa ilaaha ill-allaahu, waḥdahu laa shareeka lahu, lahul-mulku wa lahul-hamdu, wa huwa \‛alaa kulli shay\’in qadeer</item>
     </string-array>
 
     <string-array name="azkar_english">
         <item>  I ask Allah to forgive me </item>
         <item>  O\' Allah, You are the Peace, and You are the Source of Peace, You are Blessed, Oh Possessor of Glory and Honor</item>
         <item>  O\' Allah Assist me in remembering you, in thanking you, and worshipping you in the best of manners</item>
+        <item>None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise and He is over all things omnipotent. There is no might nor power except with Allah, none has the right to be worshipped except Allah and we worship none except Him. For Him is all favor, grace, and glorious praise. None has the right to be worshipped except Allah and we are sincere in faith and devotion to Him although the disbelievers detest it</item>
+        <item> Glorious is God\n
+Praises are due to Allah\n
+Allah is the greatest\n
+None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise, and He is over all things omnipotent</item>
     </string-array>
 
     <string-array name="azkar_reference">
         <item> Sahih Muslim 1/414</item>
         <item> Abu Dawud 2:62, Ibn Majah 2:1267,At-Trimidhi 5:515,Ahmed 5:360</item>
         <item>  Sahih Al Bhukari 4:95 Muslim 4:2071</item>
+        <item> Sahih Muslim Book 1 :415</item>
+        <item> Sahih Muslim Book 1 :418</item>
     </string-array>
 
     <string-array name="arabic">
         <item>أَسْـتَغْفِرُ الله،  أَسْـتَغْفِرُ الله،  أَسْـتَغْفِرُ الله.</item>
         <item>اللّهُـمَّ أَنْـتَ السَّلامُ ، وَمِـنْكَ السَّلام ، تَبارَكْتَ يا ذا الجَـلالِ وَالإِكْـرام .</item>
         <item> اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ. (ثلاثا)</item>
+        <item>لا إلهَ إلاّ اللّه, وحدَهُ لا شريكَ لهُ، لهُ الملكُ ولهُ الحَمد، وهوَ على كلّ شيءٍ قدير، لا حَـوْلَ وَلا قـوَّةَ إِلاّ بِاللهِ، لا إلهَ إلاّ اللّـه، وَلا نَعْـبُـدُ إِلاّ إيّـاه, لَهُ النِّعْـمَةُ وَلَهُ الفَضْل وَلَهُ الثَّـناءُ الحَـسَن، لا إلهَ إلاّ اللّهُ مخْلِصـينَ لَـهُ الدِّينَ وَلَوْ كَـرِهَ الكـافِرون.</item>
+        <item>
+             سُـبْحانَ اللهِ،(ثلاثا وثلاثين)\n
+            والحَمْـدُ لله، (ثلاثا وثلاثين)\n
+        واللهُ أكْـبَر. (ثلاثا وثلاثين) \n
+            لا إلهَ إلاّ اللّهُ وَحْـدَهُ لا شريكَ لهُ، لهُ الملكُ ولهُ الحَمْد، وهُوَ على كُلّ شَيءٍ قَـدير.
+        </item>
     </string-array>
 
 

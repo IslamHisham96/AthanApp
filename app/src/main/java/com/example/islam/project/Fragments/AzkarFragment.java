@@ -40,7 +40,7 @@ public class AzkarFragment extends Fragment {
         mRecyclerView.addItemDecoration(dividerItemDecoration);
         mAdapter = new AzkarAdapter(param);
         mRecyclerView.setAdapter(mAdapter);
-        
+        mRecyclerView.setFocusable(false);
         return v;
     }
     
