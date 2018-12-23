@@ -9,8 +9,10 @@
     <string name="permissions_title">Permission needed!</string>
     <string name="loading">Loading&#8230;</string>
     <string name="location_got">Location got</string>
-    <string name="waiting_location">Please Enable Location from Settings</string>
+    <string name="enable_location">Please Enable Location from Settings</string>
     <string name="waiting_permissions">Checking Permissions&#8230;</string>
+    <string name="waiting_location">Getting Location&#8230;</string>
+    <string name="service_failed">Networking issue, please try again later</string>
     <string-array name="calc_methods">
         <item>University of Islamic Sciences, Karachi</item>
         <item>Islamic Society of North America</item>

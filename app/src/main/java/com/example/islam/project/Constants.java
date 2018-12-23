@@ -24,11 +24,10 @@ public class Constants {
     public static final String[] TIMINGS = new String[]{"Fajr","Sunrise","Dhuhr","Asr","Maghrib","Isha"};
 
     public static final String TAG = "MyTag";
-    public static final String DATA = "data";
-    public static final String STATUS = "status";
     public static final String ATHAN_CALL = "athan_call";
-    public static final String ACTION_CLOSE = "close_action";
-    public static final int TIMEOUT = 10;
+    public static final String ACTION_CALL_SUCCESS = "com.example.islam.project.close_action";
+    public static final String ACTION_CALL_FAILED = "com.example.islam.project.failed_action";
+    public static final int TIMEOUT = 20;
 
     public static final String MY_PREFS_NAME = "MyPrefsFile";
     public static final String FIRST_TIME = "firstTime";

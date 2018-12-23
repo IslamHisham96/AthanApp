@@ -1,5 +1,7 @@
 package com.example.islam.project.Activities;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.location.Location;
@@ -12,12 +14,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.islam.project.Constants;
-import com.example.islam.project.Fragments.CalcMethodFragment;
-import com.example.islam.project.Fragments.LoadingFragment;
 import com.example.islam.project.MyApplication;
-import com.example.islam.project.Observers.ParamsObserver;
-import com.example.islam.project.Observers.ParamsSubject;
 import com.example.islam.project.R;
+
+import java.util.Calendar;
 
 
 public class MainActivity extends MyActivity {
@@ -30,9 +30,24 @@ public class MainActivity extends MyActivity {
         setContentView(R.layout.activity_main);
         fragmentFrame = R.id.mainCoordinatorLayout;
         mainCoordinatorLayout = findViewById(R.id.mainCoordinatorLayout);
-        loadingFragment = new LoadingFragment();
-        calcMethodFragment = new CalcMethodFragment();
-        setObserver(new ParamsObserver(this));
+        mBroadcastReceiver = new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if(intent.getAction().equals(Constants.ACTION_CALL_SUCCESS)){
+                    observer.saveParams();
+                    MyApplication.setFirst(false);
+                    Intent i = new Intent(getApplicationContext(), PrayerTimesActicity.class);
+                    startActivity(i);
+                    finish();
+                }
+                else if(intent.getAction().equals(Constants.ACTION_CALL_FAILED)){
+                    serviceFailed();
+                    finish(); //TODO cake
+                }
+            }
+        };
+        initializeBroadcastReceiver();
         Log.d(Constants.TAG,"here");
         goToLocationSettingFrament();
     }
@@ -72,17 +87,13 @@ public class MainActivity extends MyActivity {
     @Override
     public void CalcMethodSet(int method) {
         super.CalcMethodSet(method);
+        yearSet(Calendar.getInstance().get(Calendar.YEAR));
         finishSettings();
     }
     @Override
     public void LocationSet(Location location) {
         super.LocationSet(location);
         goToCalcMethodFragment();
-    }
-    public void finishSettings(){
-        goToLoadingFragment();
-        MyApplication.setFirst(false);
-        observer.sendRequest();
     }
 
 

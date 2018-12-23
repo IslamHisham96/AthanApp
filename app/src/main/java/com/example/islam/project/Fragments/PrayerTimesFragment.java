@@ -59,11 +59,7 @@ public class PrayerTimesFragment extends Fragment implements PrayerElapsedObserv
         mRecyclerView.setLayoutManager(mLayoutManager);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(), ((LinearLayoutManager)mLayoutManager).getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
-        loadDayData();
-        Log.d(Constants.TAG, Arrays.toString(mDataset.get(0)));
-        Log.d(Constants.TAG, mDataset.size()+"");
-        mAdapter = new PrayerAdapter(mDataset, this, timeToNextPrayer(), nextPrayerIndex);
-        mRecyclerView.setAdapter(mAdapter);
+        update(true);
         return v;
     }
 
@@ -103,7 +99,14 @@ public class PrayerTimesFragment extends Fragment implements PrayerElapsedObserv
     }
 
     private void loadDayData(){
-        int start = (Calendar.getInstance().get(Calendar.DAY_OF_YEAR) - 1  /*+ (debug?0:1) */) * Constants.PRAYERS_COUNT;
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        if(year != Constants.year){
+            Log.d(Constants.TAG, "year not equal");
+            mListener.yearSet(year);
+            return;
+        }
+        int start = (calendar.get(Calendar.DAY_OF_YEAR) - 1  /*+ (debug?0:1) */) * Constants.PRAYERS_COUNT;
         mDataset = MyApplication.displayRecordSetFromTo(start, start + Constants.PRAYERS_COUNT);
         dateTxt.setText(DateUtils.formatHijriDate(mDataset.get(0)[2]));
         mDataset.add(null);

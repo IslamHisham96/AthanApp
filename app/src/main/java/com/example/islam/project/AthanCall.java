@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class AthanCall {
 
     public AthanCall(final AthanCallBuilder builder){
-        String tuneString = Arrays.toString(builder.tune).replaceAll(" ", "");
+        String tuneString = builder.athanParam.getTuneString();
         StringBuilder athanCall =
 
                 new StringBuilder("https://api.aladhan.com/v1/calendar?");
@@ -19,11 +19,10 @@ public class AthanCall {
         athanCall.append("&method=").append(builder.calcMethod);
         athanCall.append("&year=").append(builder.year);
         athanCall.append("&annual=true");
-        athanCall.append("&tune=").append(tuneString.substring(1, tuneString.length() - 2));
+        athanCall.append("&tune=").append(tuneString);
         athanCall.append("&adjustment=").append(builder.hijriAdj);
         Log.d(TAG,athanCall.toString());
 
-        MyApplication.saveParams(builder.athanParam); //TODO cake
 
         Intent serviceCall = new Intent(MyApplication.getAppContext(),AthanCallIntentService.class);
         serviceCall.putExtra(ATHAN_CALL, athanCall.toString());
@@ -73,6 +72,15 @@ public class AthanCall {
         public AthanCallBuilder TunePrayer(int id, int tuning) {
             this.tune[id] = tuning;
             return this;
+        }
+
+        public AthanCallBuilder TunePrayers(int [] tuning) {
+            for(int i=0;i<tuning.length;i++)
+                this.tune[i] = tuning[i];
+            return this;
+        }
+        public AthanCallParams getAthanParams() {
+            return athanParam;
         }
 
         public AthanCall build() {

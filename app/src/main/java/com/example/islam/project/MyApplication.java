@@ -121,10 +121,10 @@ public class MyApplication extends Application {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(UPDATE_CALC_METHOD,calcMethod = params.getCalc_method());
         editor.putInt(UPDATE_HIJRI_ADJ,hijriAdj = params.getHijri_adj());
-        editor.putString(UPDATE_LOCATION,params.getLocation());
+        editor.putInt(UPDATE_YEAR,year = params.getYear());
+        editor.putString(UPDATE_LOCATION,location = params.getLocation());
         latitude = params.getLatitude();
         longitude = params.getLongitude();
-        editor.putInt(UPDATE_YEAR,params.getYear());
         tuneString = params.getTuneString();
         editor.putString(UPDATE_TUNES,tuneString);
         tune = params.getTune();

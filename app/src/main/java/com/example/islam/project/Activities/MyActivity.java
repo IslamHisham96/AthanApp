@@ -2,8 +2,6 @@ package com.example.islam.project.Activities;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -11,10 +9,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.example.islam.project.Constants;
@@ -31,27 +27,33 @@ public abstract class MyActivity extends AppCompatActivity implements OnFragment
     protected int fragmentFrame;
     protected ParamsObserver observer;
     LocalBroadcastManager mLocalBroadcastManager;
-    BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if(intent.getAction().equals(Constants.ACTION_CLOSE)){
-                finish();
-            }
-        }
-    };
+    BroadcastReceiver mBroadcastReceiver;
 
 
     public abstract void showLocationSettings();
 
+    public void initializeBroadcastReceiver(){
+        IntentFilter mIntentFilter = new IntentFilter();
+        mIntentFilter.addAction(Constants.ACTION_CALL_SUCCESS);
+        mIntentFilter.addAction(Constants.ACTION_CALL_FAILED);
+        mLocalBroadcastManager.registerReceiver(mBroadcastReceiver, mIntentFilter);
+    }
+    public void serviceFailed(){
+        Toast.makeText(this, R.string.service_failed, Toast.LENGTH_LONG);
+    }
+    @Override
+    public void finishSettings(){
+        goToLoadingFragment();
+        observer.sendRequest();
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadingFragment = new LoadingFragment();
+        calcMethodFragment = new CalcMethodFragment();
+        setObserver(new ParamsObserver(this));
         mLocalBroadcastManager = LocalBroadcastManager.getInstance(this);
-        IntentFilter mIntentFilter = new IntentFilter();
-        mIntentFilter.addAction(Constants.ACTION_CLOSE);
-        mLocalBroadcastManager.registerReceiver(mBroadcastReceiver, mIntentFilter);
     }
 
     @Override

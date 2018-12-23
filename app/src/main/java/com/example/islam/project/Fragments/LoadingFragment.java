@@ -22,7 +22,10 @@ import android.widget.TextView;
 
 import com.example.islam.project.Constants;
 import com.example.islam.project.Activities.MyActivity;
+import com.example.islam.project.MyApplication;
 import com.example.islam.project.R;
+
+import java.util.List;
 
 import static android.content.Context.LOCATION_SERVICE;
 
@@ -44,6 +47,7 @@ public class LoadingFragment extends Fragment implements LocationListener {
 
     public LoadingFragment() {
     }
+
     // TODO: Rename and change types and number of parameters
     public static LoadingFragment newInstance(String param1, String param2) {
         LoadingFragment fragment = new LoadingFragment();
@@ -70,6 +74,14 @@ public class LoadingFragment extends Fragment implements LocationListener {
         loadingTextView = v.findViewById(R.id.loadingTextView);
         loadingTextView.setText(loadingMessage);
         loadingProgressBar = v.findViewById(R.id.loadingProgressBar);
+        locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
+        if (mode_gps) {
+            if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                setLoadingMessage(getResources().getString(R.string.enable_location));
+                activity.showLocationSettings();
+            } else
+                checkPermissions();
+        }
         return v;
     }
 
@@ -88,27 +100,23 @@ public class LoadingFragment extends Fragment implements LocationListener {
             throw new RuntimeException(context.toString()
                     + " must implement MyActivity");
         }
-        locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
-        if(mode_gps) {
-            if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                setLoadingMessage(getResources().getString(R.string.waiting_location));
-                activity.showLocationSettings();
-            } else
-                checkPermissions();
-        }
+
     }
-    public void loadingComplete(){
+
+    public void loadingComplete() {
         loadingProgressBar.setVisibility(View.INVISIBLE);
         loadingTextView.setText(R.string.location_got);
 
     }
-    public void setLoadingMessage(String loadingMessage){
+
+    public void setLoadingMessage(String loadingMessage) {
         //Log.d(Constants.TAG,loadingMessage);
         this.loadingMessage = loadingMessage;
-        if(loadingTextView!=null)
+        if (loadingTextView != null)
             loadingTextView.setText(loadingMessage);
     }
-    public void setMode(boolean mode){
+
+    public void setMode(boolean mode) {
         this.mode_gps = mode;
     }
 
@@ -116,14 +124,15 @@ public class LoadingFragment extends Fragment implements LocationListener {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-        if(locationManager != null)
+        if (locationManager != null)
             locationManager.removeUpdates(this);
     }
 
     @Override
     public void onLocationChanged(Location location) {
+        Log.d(Constants.TAG, "location dude out");
         if (enable_pos) {
-            Log.d(Constants.TAG,"location dude");
+            Log.d(Constants.TAG, "location dude");
             loadingComplete();
             mListener.LocationSet(location);
             enable_pos = false;
@@ -166,7 +175,7 @@ public class LoadingFragment extends Fragment implements LocationListener {
                 }
             }
         }
-        Log.d(Constants.TAG,permissions+" done");
+        Log.d(Constants.TAG, permissions + " done");
         return permissions;
     }
 
@@ -182,24 +191,49 @@ public class LoadingFragment extends Fragment implements LocationListener {
 
     }
 
-    public void checkPermissions(){
+    public void checkPermissions() {
         if (checkPermissions(PERMISSIONS)) {
 
             if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                     && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
                 return;
             }
-            locationManager.requestLocationUpdates(locationManager.getBestProvider(new Criteria(), true), Constants.MIN_TIME_BW_UPDATES,
+            Log.d(Constants.TAG, "after checkpermissions");
+            setLoadingMessage(getResources().getString(R.string.waiting_location));
+            Object[] params = getLastKnownLocation();
+            Location location = (Location)params[0];
+            String bestProvider = (String)params[1];
+            enable_pos = true;
+            if(location != null)
+                onLocationChanged(location);
+            Log.d(Constants.TAG, "waiting and enable_pos");
+            locationManager.requestLocationUpdates(bestProvider, Constants.MIN_TIME_BW_UPDATES,
 
                     Constants.MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
-            enable_pos = true;
+
         }
+    }
+
+    private Object[] getLastKnownLocation() {
+        List<String> providers = locationManager.getProviders(true);
+        Location bestLocation = null;
+        String bestProvider = locationManager.getBestProvider(new Criteria(), true);
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return null;
+        }
+        for (String provider : providers) {
+
+            Location l = locationManager.getLastKnownLocation(provider);
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                // Found best last known location: %s", l);
+                bestLocation = l;
+                bestProvider = provider;
+            }
+        }
+        return new Object[] {bestLocation, bestProvider};
     }
 }

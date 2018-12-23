@@ -1,5 +1,7 @@
 package com.example.islam.project;
 
+import android.util.Log;
+
 import java.util.Arrays;
 
 public class AthanCallParams {
@@ -47,10 +49,11 @@ public class AthanCallParams {
         int [] tunes = new int[splitTunes.length];
         for(int i=0;i<tunes.length;i++)
             tunes[i] = Integer.parseInt(splitTunes[i]);
+        Log.d(Constants.TAG, tuneString + " tunes string " + splitTunes.length);
         return tunes;
     }
     public String getTuneString(){
         String tuneString = Arrays.toString(tune).replaceAll(" ", "");
-        return tuneString.substring(1, tuneString.length()-2);
+        return tuneString.substring(1, tuneString.length()-1);
     }
 }

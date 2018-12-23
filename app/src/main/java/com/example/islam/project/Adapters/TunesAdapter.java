@@ -1,6 +1,7 @@
 package com.example.islam.project.Adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,7 @@ public class TunesAdapter extends RecyclerView.Adapter<TunesAdapter.MyViewHolder
         tunes = new int[Constants.tune.length + 1];
         for(int i=0;i<tunes.length-1;i++)
             tunes[i] = Constants.tune[i];
+        Log.d(Constants.TAG, tunes.length+""+Constants.tune.length);
         tunes[tunes.length - 1] = Constants.hijriAdj;
     }
 
@@ -62,7 +64,7 @@ public class TunesAdapter extends RecyclerView.Adapter<TunesAdapter.MyViewHolder
         incBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int cur = Integer.parseInt(tuneTxt.getText().toString());
+                int cur = tunes[pos];
                 cur = Math.min(cur+1, Constants.MAX_TUNE);
                 tunes[pos] = cur;
                 tuneTxt.setText(cur+"");
@@ -71,7 +73,7 @@ public class TunesAdapter extends RecyclerView.Adapter<TunesAdapter.MyViewHolder
         decBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int cur = Integer.parseInt(tuneTxt.getText().toString());
+                int cur = tunes[pos];
                 cur = Math.max(cur-1, Constants.MIN_TUNE);
                 tunes[pos] = cur;
                 tuneTxt.setText(cur+"");
@@ -83,5 +85,15 @@ public class TunesAdapter extends RecyclerView.Adapter<TunesAdapter.MyViewHolder
     @Override
     public int getItemCount() {
         return tunes.length;
+    }
+
+    public int[] getTunes(){
+        int[] retTunes = new int[Constants.PRAYERS_COUNT];
+        for(int i=0;i<retTunes.length;i++)
+            retTunes[i] = tunes[i];
+        return retTunes;
+    }
+    public int getHijriAdj(){
+        return tunes[tunes.length-1];
     }
 }

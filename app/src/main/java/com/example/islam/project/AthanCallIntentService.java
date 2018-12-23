@@ -8,7 +8,6 @@ import android.util.Log;
 
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
-import com.example.islam.project.Activities.PrayerTimesActicity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -65,6 +64,7 @@ public class AthanCallIntentService extends IntentService {
         catch (Exception ex){
             Log.e(Constants.TAG,"Error in service");
             ex.printStackTrace();
+            serviceFailed();
         }
     }
 
@@ -72,12 +72,13 @@ public class AthanCallIntentService extends IntentService {
         LocalBroadcastManager localBroadcastManager = LocalBroadcastManager
                 .getInstance(this);
         localBroadcastManager.sendBroadcast(new Intent(
-                Constants.ACTION_CLOSE));
-
-        Intent i = new Intent(getApplicationContext(), PrayerTimesActicity.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        startActivity(i);
+                Constants.ACTION_CALL_SUCCESS));
+    }
+    public void serviceFailed(){
+        LocalBroadcastManager localBroadcastManager = LocalBroadcastManager
+                .getInstance(this);
+        localBroadcastManager.sendBroadcast(new Intent(
+                Constants.ACTION_CALL_FAILED));
     }
     public void parseAthanResults(JSONObject result){
         try{

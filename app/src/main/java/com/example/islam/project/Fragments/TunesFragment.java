@@ -50,6 +50,30 @@ public class TunesFragment extends Fragment {
         mRecyclerView.addItemDecoration(dividerItemDecoration);
         mAdapter = new TunesAdapter();
         mRecyclerView.setAdapter(mAdapter);
+        setBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean changed = false;
+                int[] tunes = mAdapter.getTunes();
+                for(int i=0;i<tunes.length;i++){
+                    if(tunes[i] != Constants.tune[i]){
+                        mListener.TunesSet(tunes);
+                        changed = true;
+                        break;
+                    }
+                }
+                int hijriAdj = mAdapter.getHijriAdj();
+                if(hijriAdj != Constants.hijriAdj) {
+                    mListener.hijriAdjSet(hijriAdj);
+                    changed = true;
+                }
+
+                if(changed)
+                    mListener.finishSettings();
+                else
+                    mListener.goToPrayerFragment();
+            }
+        });
         return v;
     }
 

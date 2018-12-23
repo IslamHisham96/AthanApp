@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.islam.project.AthanCall;
 import com.example.islam.project.Constants;
+import com.example.islam.project.MyApplication;
 
 import static com.example.islam.project.Constants.*;
 
@@ -32,12 +33,11 @@ public class ParamsObserver {
                     callBuilder.setHijriAdj((Integer)update);
                     break;
                 case TUNES_OBSERVED:
-                    String[] tuneParams = ((String)update).split(",");
-                    callBuilder.TunePrayer(Integer.parseInt(tuneParams[0]),Integer.parseInt(tuneParams[1]));
+                    callBuilder.TunePrayers((int[]) update);
             }
         }
         catch(Exception ex){
-            Log.d(Constants.TAG, ex.getMessage());
+            Log.d(Constants.TAG, "ParamsObserver: "+ex.getMessage());
         }
     }
     public void updateMultiple(int[] ids, String[] updates){
@@ -50,4 +50,5 @@ public class ParamsObserver {
     public void sendRequest(){
         callBuilder.build();
     }
+    public void saveParams() {  MyApplication.saveParams(callBuilder.getAthanParams());}
 }

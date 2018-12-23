@@ -54,4 +54,6 @@ public class CalcMethodFragment extends Fragment {
     }
 
 
+
+
 }

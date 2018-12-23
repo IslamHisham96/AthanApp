@@ -23,4 +23,6 @@ public interface OnFragmentInteractionListener {
     void hijriAdjSet(int hijriAdj);
 
     void yearSet(int year);
+
+    void finishSettings();
 }
