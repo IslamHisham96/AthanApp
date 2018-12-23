@@ -1,4 +1,7 @@
 <resources>
+    <string name="channel_name">com.example.islam.project.channel_name</string>
+    <string name="channel_description">com.example.islam.project.channel_description</string>
+
     <string name="app_name">Project</string>
     <string name="location_error">Location Error: GPS Disabled!</string>
     <string name="enable">Enable</string>
@@ -56,4 +59,5 @@
     <string name="saved">Changes saved</string>
     <string name="hijri_adj">Hijri day adjust</string>
     <string name="set">Set</string>
+
 </resources>
