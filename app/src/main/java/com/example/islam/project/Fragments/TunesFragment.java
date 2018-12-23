@@ -30,7 +30,6 @@ public class TunesFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private TunesAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private Button setBtn;
 
     public TunesFragment() {
         // Required empty public constructor
@@ -43,7 +42,7 @@ public class TunesFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_tunes, container, false);
         mRecyclerView = v.findViewById(R.id.tunesRecyclerView);
-        setBtn = v.findViewById(R.id.setBtn);
+        Button setBtn = v.findViewById(R.id.setBtn);
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(), ((LinearLayoutManager)mLayoutManager).getOrientation());

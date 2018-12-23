@@ -1,5 +1,6 @@
 package com.example.islam.project.Adapters;
 
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
@@ -29,6 +30,7 @@ public class PrayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private List<String[]> mDataset;
     private Time left;
     private int nextPrayerIndex;
+
     @Override
     public void setObserver(PrayerElapsedObserver observer) {
         this.observer = observer;
@@ -36,6 +38,10 @@ public class PrayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public void notifyWithUpdate(boolean endOfDay) {
+        if(!endOfDay){
+            Resources r = MyApplication.getAppContext().getResources();
+            MyApplication.playNotification(r.getString(R.string.prayer_time_now), r.getStringArray(R.array.prayer_time_now_array)[nextPrayerIndex]);
+        }
         observer.update(endOfDay);
     }
 

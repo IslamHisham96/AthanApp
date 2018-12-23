@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/numberTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="(1)"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/arabicTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/arabic"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/arabicZikr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="أَسْـتَغْفِرُ الله،  أَسْـتَغْفِرُ الله،  أَسْـتَغْفِرُ الله."
+        android:textSize="16sp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/pronounceTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/pronounce"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/pronounceZikr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Astagfirullah, Astagfirullah, Astagfirullah"
+        android:textSize="16sp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/langTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/language"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/langZikr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="I ask Allah to forgive me"
+        android:textSize="16sp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/referenceTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:textAlignment="textEnd"
+        android:layout_marginBottom="10dp"
+        android:text="Sahih Muslim 1/414" />
+</LinearLayout>

@@ -59,5 +59,19 @@
     <string name="saved">Changes saved</string>
     <string name="hijri_adj">Hijri day adjust</string>
     <string name="set">Set</string>
+    <string name="language">English</string>
+    <string name="arabic">Arabic</string>
+    <string name="pronounce">Pronunciation</string>
+    <string name="after_prayer_azkar">Dua’s after Salah</string>
+    <string name="supplication">Supplications</string>
+    <string name="prayer_time_now">Prayer time due</string>
+    <string-array name="prayer_time_now_array">
+        <item>It is now time for Fajr Prayer</item>
+        <item>It is now time for Sunrise</item>
+        <item>It is now time for Dhuhr Prayer</item>
+        <item>It is now time for Asr Prayer</item>
+        <item>It is now time for Maghrib Prayer</item>
+        <item>It is now time for Isha Prayer</item>
+    </string-array>
 
 </resources>

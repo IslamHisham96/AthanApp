@@ -13,5 +13,10 @@
             android:id="@+id/nav_calcmethod"
             android:icon="@drawable/ic_menu_calcmethod"
             android:title="@string/recalibrate_calcmethod" />
+        <item
+            android:id="@+id/nav_supplication"
+            android:icon="@drawable/ic_menu_supplication"
+            android:title="@string/supplication" />
+
     </group>
 </menu>

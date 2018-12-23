@@ -14,6 +14,8 @@ public interface OnFragmentInteractionListener {
 
     void goToTuneFragment();
 
+    void goToAfterPrayerAzkarFragment();
+
     void CalcMethodSet(int method);
 
     void LocationSet(Location location);

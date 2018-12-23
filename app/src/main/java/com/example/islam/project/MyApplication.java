@@ -55,7 +55,7 @@ public class MyApplication extends Application {
         Log.d(Constants.TAG,"audio"+audioID);
         */
         createNotificationChannel();
-        playNotification("hey","man");
+        //playNotification("hey","man");
         sharedPreferences = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         readParams();
         openDB();

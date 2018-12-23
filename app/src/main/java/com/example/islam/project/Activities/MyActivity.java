@@ -120,6 +120,9 @@ public abstract class MyActivity extends AppCompatActivity implements OnFragment
     public void goToTuneFragment() {}
 
     @Override
+    public void goToAfterPrayerAzkarFragment() {}
+
+    @Override
     public void CalcMethodSet(int method) {
         notifyWithUpdate(Constants.CALC_METHOD_OBSERVED, method);
     }

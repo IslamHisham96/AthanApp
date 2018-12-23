@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pronunciation">
+        <item> Astagfirullah, Astagfirullah, Astagfirullah </item>
+        <item> Allahumma antas salaam wa min kas salaam taba rakta ya dhal ja laa li wal ik raam</item>
+        <item>  Allahumma a\'inni ala dhikrika wa shukrika wa husni ibadatika (x3)</item>
+    </string-array>
+
+    <string-array name="azkar_english">
+        <item>  I ask Allah to forgive me </item>
+        <item>  O\' Allah, You are the Peace, and You are the Source of Peace, You are Blessed, Oh Possessor of Glory and Honor</item>
+        <item>  O\' Allah Assist me in remembering you, in thanking you, and worshipping you in the best of manners</item>
+    </string-array>
+
+    <string-array name="azkar_reference">
+        <item> Sahih Muslim 1/414</item>
+        <item> Abu Dawud 2:62, Ibn Majah 2:1267,At-Trimidhi 5:515,Ahmed 5:360</item>
+        <item>  Sahih Al Bhukari 4:95 Muslim 4:2071</item>
+    </string-array>
+
+    <string-array name="arabic">
+        <item>أَسْـتَغْفِرُ الله،  أَسْـتَغْفِرُ الله،  أَسْـتَغْفِرُ الله.</item>
+        <item>اللّهُـمَّ أَنْـتَ السَّلامُ ، وَمِـنْكَ السَّلام ، تَبارَكْتَ يا ذا الجَـلالِ وَالإِكْـرام .</item>
+        <item> اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ. (ثلاثا)</item>
+    </string-array>
+
+
+</resources>

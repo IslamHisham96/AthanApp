@@ -12,16 +12,16 @@ import com.example.islam.project.Constants;
 import com.example.islam.project.MyApplication;
 import com.example.islam.project.R;
 
-public class TunesAdapter extends RecyclerView.Adapter<TunesAdapter.MyViewHolder> {
+public class TunesAdapter extends RecyclerView.Adapter<TunesAdapter.TunesViewHolder> {
     private int[] tunes;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class TunesViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public View mView;
-        public MyViewHolder(View mView) {
+        public TunesViewHolder(View mView) {
             super(mView);
             this.mView = mView;
         }
@@ -38,19 +38,19 @@ public class TunesAdapter extends RecyclerView.Adapter<TunesAdapter.MyViewHolder
 
     // Create new views (invoked by the layout manager)
     @Override
-    public TunesAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                        int viewType) {
+    public TunesViewHolder onCreateViewHolder(ViewGroup parent,
+                                              int viewType) {
         // create a new view
         View customView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.tune_item, parent, false);
         //
-        MyViewHolder vh = new MyViewHolder(customView);
+        TunesViewHolder vh = new TunesViewHolder(customView);
         return vh;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(TunesViewHolder holder, int position) {
         View customView = holder.mView;
         Button decBtn = customView.findViewById(R.id.decBtn);
         Button incBtn = customView.findViewById(R.id.incBtn);

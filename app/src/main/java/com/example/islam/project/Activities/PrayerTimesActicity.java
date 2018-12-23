@@ -18,7 +18,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.islam.project.AzkarParam;
 import com.example.islam.project.Constants;
+import com.example.islam.project.Fragments.AzkarFragment;
 import com.example.islam.project.Fragments.PrayerTimesFragment;
 import com.example.islam.project.Fragments.TunesFragment;
 import com.example.islam.project.R;
@@ -28,6 +30,7 @@ public class PrayerTimesActicity extends MyActivity {
     private CoordinatorLayout prayersCoordinatorLayout;
     private PrayerTimesFragment prayerTimesFragment;
     private TunesFragment tunesFragment;
+    private AzkarFragment azkarFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +56,11 @@ public class PrayerTimesActicity extends MyActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+
         prayerTimesFragment = new PrayerTimesFragment();
         tunesFragment = new TunesFragment();
+        azkarFragment = new AzkarFragment();
+
         mDrawerLayout = findViewById(R.id.drawer_layout);
         fragmentFrame = R.id.content_frame;
         prayersCoordinatorLayout = findViewById(R.id.prayersCoordinatorLayout);
@@ -75,6 +81,9 @@ public class PrayerTimesActicity extends MyActivity {
                                 break;
                             case R.id.nav_tunes:
                                 goToTuneFragment();
+                                break;
+                            case R.id.nav_supplication:
+                                goToAfterPrayerAzkarFragment();
                                 break;
                         }
                         return true;
@@ -140,6 +149,17 @@ public class PrayerTimesActicity extends MyActivity {
             .replace(fragmentFrame, calcMethodFragment)
             .addToBackStack(null)
             .commit();
+    }
+
+    @Override
+    public void goToAfterPrayerAzkarFragment() {
+        azkarFragment.setTitle(getString(R.string.after_prayer_azkar));
+        azkarFragment.setAzkarParam(new AzkarParam(R.array.arabic, R.array.azkar_english, R.array.pronunciation, R.array.azkar_reference));
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                .replace(fragmentFrame, azkarFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override
