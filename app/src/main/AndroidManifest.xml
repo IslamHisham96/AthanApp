@@ -21,8 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MainActivity" />
-        <activity android:name=".Activities.PrayerTimesActivity" />
+        <activity android:name=".Activities.MainActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/main_title"/>
+        <activity android:name=".Activities.PrayerTimesActivity"
+            android:screenOrientation="portrait"/>
 
         <service
             android:name=".Services.AthanCallIntentService"

@@ -16,6 +16,8 @@ public interface OnFragmentInteractionListener {
 
     void goToAfterPrayerAzkarFragment();
 
+    void goToQiblaFragment();
+
     void CalcMethodSet(int method);
 
     void LocationSet(Location location);

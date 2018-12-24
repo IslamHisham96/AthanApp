@@ -18,5 +18,10 @@
             android:icon="@drawable/ic_menu_supplication"
             android:title="@string/supplication" />
 
+        <item
+            android:id="@+id/nav_qibla"
+            android:icon="@drawable/ic_menu_qibla"
+            android:title="@string/qibla" />
+
     </group>
 </menu>

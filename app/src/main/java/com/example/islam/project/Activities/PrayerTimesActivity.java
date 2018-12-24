@@ -29,6 +29,7 @@ import com.example.islam.project.Fragments.AzkarFragment;
 import com.example.islam.project.Fragments.BackButtonSupportFragment;
 import com.example.islam.project.Fragments.MyFragment;
 import com.example.islam.project.Fragments.PrayerTimesFragment;
+import com.example.islam.project.Fragments.QiblaFragment;
 import com.example.islam.project.Fragments.TunesFragment;
 import com.example.islam.project.R;
 
@@ -40,6 +41,7 @@ public class PrayerTimesActivity extends MyActivity {
     private PrayerTimesFragment prayerTimesFragment;
     private TunesFragment tunesFragment;
     private AzkarFragment azkarFragment;
+    private QiblaFragment qiblaFragment;
 
     private FragmentManager fragmentManager;
     private AddFragmentHandler fragmentHandler;
@@ -108,6 +110,7 @@ public class PrayerTimesActivity extends MyActivity {
         prayerTimesFragment = new PrayerTimesFragment();
         tunesFragment = new TunesFragment();
         azkarFragment = new AzkarFragment();
+        qiblaFragment = new QiblaFragment();
 
 
         prayersCoordinatorLayout = findViewById(R.id.prayersCoordinatorLayout);
@@ -132,11 +135,15 @@ public class PrayerTimesActivity extends MyActivity {
                             case R.id.nav_supplication:
                                 goToAfterPrayerAzkarFragment();
                                 break;
+                            case R.id.nav_qibla:
+                                goToQiblaFragment();
+                                break;
                         }
                         return true;
                     }
                 });
-        fragmentHandler.add(prayerTimesFragment);
+        //fragmentHandler.add(prayerTimesFragment);
+        goToPrayerFragment();
     }
 
     @Override
@@ -238,6 +245,10 @@ public class PrayerTimesActivity extends MyActivity {
         fragmentHandler.add(calcMethodFragment);
     }
 
+    @Override
+    public void goToQiblaFragment() {
+        fragmentHandler.add(qiblaFragment);
+    }
     @Override
     public void goToAfterPrayerAzkarFragment() {
         azkarFragment.setTitle(getString(R.string.after_prayer_azkar));

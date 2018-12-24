@@ -21,6 +21,8 @@ public class Constants {
     public static final int MIN_TIME_BW_UPDATES =  0;
     public static final int MIN_TUNE = -10;
     public static final int MAX_TUNE = 10;
+    public static final double KAABA_LATITUDE = 21.42250833;
+    public static final double KAABA_LONGITUDE = 39.82616111;
     public static final String[] TIMINGS = new String[]{"Fajr","Sunrise","Dhuhr","Asr","Maghrib","Isha"};
 
     public static final String TAG = "MyTag";

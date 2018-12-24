@@ -5,11 +5,16 @@
     <string name="prayers_title">Prayer Times</string>
     <string name="calcmethod_title">Calculation Method</string>
     <string name="tunes_title">Manual Adjustements</string>
+    <string name="main_title">Configure</string>
+    <string name="qibla_title">Qibla Compass</string>
     <string name="supplications_title">Supplications</string>
 
     <string name="channel_name">com.example.islam.project.channel_name</string>
     <string name="channel_description">com.example.islam.project.channel_description</string>
 
+
+    <string name="sensor_not_found">Sensor Not Found!</string>
+    <string name="qibla_direction">Qibla direction is %1$d° from North</string>
     <string name="location_error">Location Error: GPS Disabled!</string>
     <string name="enable">Enable</string>
     <string name="please_wait">Please Wait&#8230;</string>
@@ -59,10 +64,14 @@
         <item>Dhū al-Qa‘dah</item>
         <item>Dhū al-Ḥijjah</item>
     </string-array>
+
     <string name="recalibrate_location">Calibrate Location</string>
     <string name="recalibrate_tunes">Adjust Times</string>
     <string name="recalibrate_calcmethod">Change Calculation Method</string>
+    <string name="supplication">Supplications</string>
+    <string name="qibla">Qibla direction</string>
     <string name="nav_title">Change Settings</string>
+
     <string name="saved">Changes saved</string>
     <string name="hijri_adj">Hijri day adjust</string>
     <string name="set">Set</string>
@@ -70,7 +79,6 @@
     <string name="arabic">Arabic</string>
     <string name="pronounce">Pronunciation</string>
     <string name="after_prayer_azkar">Dua’s after Salah</string>
-    <string name="supplication">Supplications</string>
     <string name="prayer_time_now">Prayer time due</string>
     <string-array name="prayer_time_now_array">
         <item>It is now time for Fajr Prayer</item>
@@ -80,5 +88,6 @@
         <item>It is now time for Maghrib Prayer</item>
         <item>It is now time for Isha Prayer</item>
     </string-array>
+
 
 </resources>
