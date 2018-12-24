@@ -70,15 +70,16 @@ public class MyApplication extends Application {
             startService(mServiceIntent);
         }
     }
+    //TODO change if possible
     private boolean isMyServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
             if (serviceClass.getName().equals(service.service.getClassName())) {
-                Log.i ("isMyServiceRunning?", true+"");
+                Log.i (Constants.TAG, "isMyServiceRunning? "+true);
                 return true;
             }
         }
-        Log.i ("isMyServiceRunning?", false+"");
+        Log.i (Constants.TAG, "isMyServiceRunning? "+true);
         return false;
     }
     @Override

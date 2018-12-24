@@ -26,7 +26,6 @@ public class DBAdapter {
     public static final int COL_ROWID = 0;
 
     // [TO_DO_A2]
-    // TODO: Change the field names (column names) of your table
 
     public static final String KEY_PRAYER = "event";
     public static final String KEY_DATE = "date";

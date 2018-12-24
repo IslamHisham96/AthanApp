@@ -35,7 +35,6 @@ public class LoadingFragment extends MyFragment implements LocationListener {
     public static int PERMISSIONS_REQUEST_TAG = 88;
     public static String[] PERMISSIONS = new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION};
 
-    // TODO: Rename and change types of parameters
     private String loadingMessage = "";
     private ProgressBar loadingProgressBar;
     private TextView loadingTextView;

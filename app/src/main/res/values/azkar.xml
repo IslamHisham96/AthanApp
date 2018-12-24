@@ -1,46 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="pronunciation">
-        <item> Astagfirullah, Astagfirullah, Astagfirullah </item>
-        <item> Allahumma antas salaam wa min kas salaam taba rakta ya dhal ja laa li wal ik raam</item>
-        <item>  Allahumma a\'inni ala dhikrika wa shukrika wa husni ibadatika (x3)</item>
+        <item>Astagfirullah, Astagfirullah, Astagfirullah </item>
+        <item>Allahumma antas salaam wa min kas salaam taba rakta ya dhal ja laa li wal ik raam</item>
+        <item>Allahumma a\'inni ala dhikrika wa shukrika wa husni ibadatika (x3)</item>
         <item>La ilaha illa allahu wah dahu la shareeka laahu, lahul mulku wa lahul hamdu, wa huwa \'ala kullee shay\'in qadeer, La hawla wa laqu-aata illah billah, la ilaha illAllah wala na\'budu illayyah, lahun-ni\'matu, wa lahul fadl, wa lahu-saana ul hasanu, la ilaha illAllahhu mukhliseena lahudeen, wa law karihal kafiroon</item>
         <item> Sub-han Allah (x33)\n
 Alhamdu lillah (x33)\n
 Allah hu Akbar (x33)\n
 Laa ilaaha ill-allaahu, waḥdahu laa shareeka lahu, lahul-mulku wa lahul-hamdu, wa huwa \‛alaa kulli shay\’in qadeer</item>
+
+        <item>Allahu la ilaha illahuwa alhayyu alqayyoomu la ta\'khuthuhu sinatun wala nawmun lahu ma fee assamawatiwama fee al-ardi man tha allatheeyashfaAAu AAindahu illa bi-ithnihi yaAAlamu mabayna aydeehim wama khalfahum wala yuheetoonabishay-in min AAilmihi illa bima shaawasiAAa kursiyyuhu assamawati wal-ardawala yaooduhu hifthuhumawahuwa alAAaliyyu alAAatheem(255)</item>
+        <item>Qul huwa Allahu ahad(1) Allahu assamad(2) Lam yalid walam yoolad(3) Walam yakun lahu kufuwan ahad(4)</item>
+        <item>Qul aAAoothu birabbi alfalaq(1) Min sharri ma khalaq(2) Wamin sharri ghasiqin ithawaqab(3) Wamin sharri annaffathatifee alAAuqad(4) Wamin sharri hasidin itha hasad(5)</item>
+        <item>Qul aAAoothu birabbi annas(1) Maliki annas(2) Ilahi annas(3) Min sharri alwaswasi alkhannas(4) Allathee yuwaswisu fee sudoori annas(5) Mina aljinnati wannas(6)</item>
     </string-array>
 
     <string-array name="azkar_english">
-        <item>  I ask Allah to forgive me </item>
-        <item>  O\' Allah, You are the Peace, and You are the Source of Peace, You are Blessed, Oh Possessor of Glory and Honor</item>
-        <item>  O\' Allah Assist me in remembering you, in thanking you, and worshipping you in the best of manners</item>
+        <item>I ask Allah to forgive me </item>
+        <item>O\' Allah, You are the Peace, and You are the Source of Peace, You are Blessed, Oh Possessor of Glory and Honor</item>
+        <item>O\' Allah Assist me in remembering you, in thanking you, and worshipping you in the best of manners</item>
         <item>None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise and He is over all things omnipotent. There is no might nor power except with Allah, none has the right to be worshipped except Allah and we worship none except Him. For Him is all favor, grace, and glorious praise. None has the right to be worshipped except Allah and we are sincere in faith and devotion to Him although the disbelievers detest it</item>
-        <item> Glorious is God\n
+        <item>Glorious is God\n
 Praises are due to Allah\n
 Allah is the greatest\n
 None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise, and He is over all things omnipotent</item>
+
+        <item>Allah – there is no deity except Him, the Ever-Living, the Sustainer of [all] existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission? He knows what is [presently] before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills. His Kursi extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great.(255)</item>
+        <item>Say, "He is Allah , [who is] One(1) Allah, the Eternal Refuge(2) He neither begets nor is born(3) Nor is there to Him any equivalent(4)</item>
+        <item>Say, "I seek refuge in the Lord of daybreak(1) From the evil of that which He created(2) And from the evil of darkness when it settles(3) And from the evil of the blowers in knots(4) And from the evil of an envier when he envies(5)</item>
+        <item>Say, "I seek refuge in the Lord of mankind(1) The Sovereign of mankind(2) The God of mankind(3) From the evil of the retreating whisperer(4) Who whispers [evil] into the breasts of mankind(5) From among the jinn and mankind(6)</item>
     </string-array>
 
     <string-array name="azkar_reference">
-        <item> Sahih Muslim 1/414</item>
-        <item> Abu Dawud 2:62, Ibn Majah 2:1267,At-Trimidhi 5:515,Ahmed 5:360</item>
-        <item>  Sahih Al Bhukari 4:95 Muslim 4:2071</item>
-        <item> Sahih Muslim Book 1 :415</item>
-        <item> Sahih Muslim Book 1 :418</item>
+        <item>Sahih Muslim 1/414</item>
+        <item>Abu Dawud 2:62, Ibn Majah 2:1267,At-Trimidhi 5:515,Ahmed 5:360</item>
+        <item>Sahih Al Bhukari 4:95 Muslim 4:2071</item>
+        <item>Sahih Muslim Book 1 :415</item>
+        <item>Sahih Muslim Book 1 :418</item>
+        <item>Surah al-Baqarah 2: 255 : Al-Hakim 1/562, an-Nasa\'i and at-Tabarani</item>
+        <item>Al-Iklas: Abu Dawud 2:86. An Nasa\'i 3:68 also Al-Albani Sahih Timithi 2/8</item>
+        <item>Al- Falaq: Abu Dawud 2:86. An Nasa\'i 3:68 also Al-Albani Sahih Timithi 2/8</item>
+        <item>An-Naas: Abu Dawud 2:86. An Nasa\'i 3:68 also Al-Albani Sahih Timithi 2/8</item>
     </string-array>
 
     <string-array name="arabic">
         <item>أَسْـتَغْفِرُ الله،  أَسْـتَغْفِرُ الله،  أَسْـتَغْفِرُ الله.</item>
         <item>اللّهُـمَّ أَنْـتَ السَّلامُ ، وَمِـنْكَ السَّلام ، تَبارَكْتَ يا ذا الجَـلالِ وَالإِكْـرام .</item>
-        <item> اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ. (ثلاثا)</item>
+        <item>اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ. (ثلاثا)</item>
         <item>لا إلهَ إلاّ اللّه, وحدَهُ لا شريكَ لهُ، لهُ الملكُ ولهُ الحَمد، وهوَ على كلّ شيءٍ قدير، لا حَـوْلَ وَلا قـوَّةَ إِلاّ بِاللهِ، لا إلهَ إلاّ اللّـه، وَلا نَعْـبُـدُ إِلاّ إيّـاه, لَهُ النِّعْـمَةُ وَلَهُ الفَضْل وَلَهُ الثَّـناءُ الحَـسَن، لا إلهَ إلاّ اللّهُ مخْلِصـينَ لَـهُ الدِّينَ وَلَوْ كَـرِهَ الكـافِرون.</item>
-        <item>
-             سُـبْحانَ اللهِ،(ثلاثا وثلاثين)\n
+        <item>             سُـبْحانَ اللهِ،(ثلاثا وثلاثين)\n
             والحَمْـدُ لله، (ثلاثا وثلاثين)\n
         واللهُ أكْـبَر. (ثلاثا وثلاثين) \n
             لا إلهَ إلاّ اللّهُ وَحْـدَهُ لا شريكَ لهُ، لهُ الملكُ ولهُ الحَمْد، وهُوَ على كُلّ شَيءٍ قَـدير.
         </item>
+        <item>أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ
+اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ(٢٥٥)</item>
+        <item>بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم
+قُلْ هُوَ ٱللَّهُ أَحَد(١) ٱللَّهُ ٱلصَّمَدُ(٢) لَمْ يَلِدْ وَلَمْ يُولَدْ(٣) وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ(٤) (ثلاث مرات بعد صلاتي الفجر والمغرب. ومرة بعد الصلوات الأخرى.)</item>
+        <item>بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم
+قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ(١) مِن شَرِّ مَا خَلَقَ(٢) وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ(٣) وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ(٤) وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ(٥) (ثلاث مرات بعد صلاتي الفجر والمغرب. ومرة بعد الصلوات الأخرى.)</item>
+        <item>بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم
+قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ(١) مَلِكِ ٱلنَّاس(٢)، إِلَٰهِ ٱلنَّاسِ(٣) مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ(٤) ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ(٥) مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ(٦) (ثلاث مرات بعد صلاتي الفجر والمغرب. ومرة بعد الصلوات الأخرى.)</item>
     </string-array>
 
 

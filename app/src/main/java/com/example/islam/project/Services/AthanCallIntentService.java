@@ -48,7 +48,6 @@ public class AthanCallIntentService extends IntentService {
                         public void onResponse(JSONObject result) {
                             MyApplication.deleteAllRecords();
                             Log.i(TAG, "onResponse: Result= " + result.toString());
-                            //TODO cake
                             parseAthanResults(result);
                             startIntent();
                         }

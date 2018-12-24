@@ -43,7 +43,7 @@ public class MainActivity extends MyActivity {
                 }
                 else if(intent.getAction().equals(Constants.ACTION_CALL_FAILED)){
                     serviceFailed();
-                    finish(); //TODO cake
+                    finish();
                 }
             }
         };
