@@ -3,10 +3,10 @@ package com.example.islam.project;
 import android.content.Intent;
 import android.util.Log;
 
+import com.example.islam.project.Services.AthanCallIntentService;
+
 import static com.example.islam.project.Constants.ATHAN_CALL;
 import static com.example.islam.project.Constants.TAG;
-
-import java.util.Arrays;
 
 public class AthanCall {
 

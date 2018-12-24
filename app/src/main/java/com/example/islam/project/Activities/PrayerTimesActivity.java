@@ -82,12 +82,13 @@ public class PrayerTimesActivity extends MyActivity {
             public void onReceive(Context context, Intent intent) {
                 if(intent.getAction().equals(Constants.ACTION_CALL_SUCCESS)){
                     observer.saveParams();
+                    goToPrayerFragment();
                 }
                 else if(intent.getAction().equals(Constants.ACTION_CALL_FAILED)){
                     Log.d(Constants.TAG, "service failed");
                     serviceFailed();
+                    finish();
                 }
-                goToPrayerFragment();
             }
         };
         initializeBroadcastReceiver();
@@ -215,11 +216,16 @@ public class PrayerTimesActivity extends MyActivity {
 
     @Override
     public void goToPrayerFragment() {
-        fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.remove(prayerTimesFragment).commit();
-        prayerTimesFragment = new PrayerTimesFragment();
-        fragmentHandler.add(prayerTimesFragment);
+        try {
+            fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.remove(prayerTimesFragment).commit();
+            prayerTimesFragment = new PrayerTimesFragment();
+            fragmentHandler.add(prayerTimesFragment);
+        } catch (Exception ex){
+            Log.e(Constants.TAG, ex.getMessage());
+            ex.printStackTrace();
+        }
     }
 
     @Override

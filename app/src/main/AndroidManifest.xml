@@ -25,8 +25,18 @@
         <activity android:name=".Activities.PrayerTimesActivity" />
 
         <service
-            android:name=".AthanCallIntentService"
-            android:exported="false"></service>
+            android:name=".Services.AthanCallIntentService"
+            android:exported="false" />
+
+        <receiver
+            android:name=".Services.ServiceRestarterBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="RestartServiceWhenStopped"/>
+
+        <service
+            android:name=".Services.PrayerTimeElapsedService"
+            android:enabled="true"></service>
     </application>
 
 </manifest>

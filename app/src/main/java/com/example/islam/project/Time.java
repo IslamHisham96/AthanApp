@@ -3,8 +3,10 @@ package com.example.islam.project;
 import android.util.Log;
 
 import java.io.Console;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 public class Time {
 
@@ -95,6 +97,44 @@ public class Time {
         Calendar ca = Calendar.getInstance();
         return new Time(ca.get(Calendar.HOUR_OF_DAY),ca.get(Calendar.MINUTE),ca.get(Calendar.SECOND));
 
+    }
+
+    public static Object[] timeToNextPrayer(final List<String[]> prayersFromDB){
+        Time now = Time.getTimeNow();
+        now.increment();
+
+        Log.d(Constants.TAG,"viewholder");
+        /*
+        if(PrayerTimesFragment.debug) {
+            Log.d(Constants.TAG,"viewholder debug");
+            now.hours = 14;
+            now.minutes = 35;
+            now.seconds = 55;
+        }
+        else{
+            now.hours = 18;
+            now.minutes = 25;
+            now.seconds = 0;
+        }*/
+        long min=Long.MAX_VALUE;
+        boolean endOfDay = false;
+        int nextPrayerIndex = -1;
+        for(int position = 0; position < prayersFromDB.size() - 1; position++){
+            Time prayer = new Time(prayersFromDB.get(position)[1]);
+            long diff = Time.differenceInMillis(now, prayer);
+            if(diff < min){
+                min = diff;
+                nextPrayerIndex = position;
+            }
+            if(position == prayersFromDB.size()-2 && nextPrayerIndex==0 && now.hours >= prayer.hours) {
+                endOfDay = true;
+                Log.d(Constants.TAG, "end of day");
+                nextPrayerIndex = position+1;
+            }
+        }
+        String nextPrayer = (endOfDay)?"00:00":prayersFromDB.get(nextPrayerIndex)[1];
+        Log.d(Constants.TAG,"next prayer: "+nextPrayer);
+        return new Object[]{nextPrayerIndex, Time.difference(Time.getTimeNow(), new Time(nextPrayer))};
     }
 
     @Override

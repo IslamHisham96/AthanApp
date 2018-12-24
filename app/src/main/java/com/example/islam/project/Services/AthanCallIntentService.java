@@ -1,4 +1,4 @@
-package com.example.islam.project;
+package com.example.islam.project.Services;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -8,6 +8,12 @@ import android.util.Log;
 
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
+import com.example.islam.project.Constants;
+import com.example.islam.project.DBElement;
+import com.example.islam.project.DateUtils;
+import com.example.islam.project.MyApplication;
+import com.example.islam.project.R;
+import com.example.islam.project.RequestQueueSingleton;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -96,60 +96,30 @@ public class PrayerTimesFragment extends MyFragment implements PrayerElapsedObse
     @Override
     public void update(boolean endOfDay) {
         //debug = false;
-        if(endOfDay)
-            loadDayData();
-        mAdapter = new PrayerAdapter(mDataset, this, timeToNextPrayer(), nextPrayerIndex);
+        if(endOfDay) {
+            if(!loadDayData())
+                return;
+        }
+        Object[] nextPrayerParams = Time.timeToNextPrayer(mDataset);
+        nextPrayerIndex = (int)nextPrayerParams[0];
+        mAdapter = new PrayerAdapter(mDataset, this, (Time)nextPrayerParams[1], nextPrayerIndex);
         if(mRecyclerView!=null)
             mRecyclerView.setAdapter(mAdapter);
     }
 
-    private void loadDayData(){
+    private boolean loadDayData(){
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         if(year != Constants.year){
             Log.d(Constants.TAG, "year not equal");
             mListener.yearSet(year);
-            return;
+            return false;
         }
         int start = (calendar.get(Calendar.DAY_OF_YEAR) - 1  /*+ (debug?0:1) */) * Constants.PRAYERS_COUNT;
         mDataset = MyApplication.displayRecordSetFromTo(start, start + Constants.PRAYERS_COUNT);
         dateTxt.setText(DateUtils.formatHijriDate(mDataset.get(0)[2]));
         mDataset.add(null);
+        return true;
     }
-    private Time timeToNextPrayer(){
-        Time now = Time.getTimeNow();
-        now.increment();
 
-        Log.d(Constants.TAG,"viewholder");
-        /*
-        if(PrayerTimesFragment.debug) {
-            Log.d(Constants.TAG,"viewholder debug");
-            now.hours = 14;
-            now.minutes = 35;
-            now.seconds = 55;
-        }
-        else{
-            now.hours = 18;
-            now.minutes = 25;
-            now.seconds = 0;
-        }*/
-        long min=Long.MAX_VALUE;
-        boolean endOfDay = false;
-        for(int position = 0; position < mDataset.size() - 1; position++){
-            Time prayer = new Time(mDataset.get(position)[1]);
-            long diff = Time.differenceInMillis(now, prayer);
-            if(diff < min){
-                min = diff;
-                nextPrayerIndex = position;
-            }
-            if(position == mDataset.size()-2 && nextPrayerIndex==0 && now.hours >= prayer.hours) {
-                endOfDay = true;
-                Log.d(Constants.TAG, "end of day");
-                nextPrayerIndex = position+1;
-            }
-        }
-        String nextPrayer = (endOfDay)?"00:00":mDataset.get(nextPrayerIndex)[1];
-        Log.d(Constants.TAG,"next prayer: "+nextPrayer);
-        return Time.difference(Time.getTimeNow(), new Time(nextPrayer));
-    }
 }

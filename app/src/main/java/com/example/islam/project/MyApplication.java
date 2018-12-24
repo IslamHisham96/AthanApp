@@ -1,5 +1,6 @@
 package com.example.islam.project;
 
+import android.app.ActivityManager;
 import android.app.Application;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.islam.project.Activities.PrayerTimesActivity;
 import com.example.islam.project.Adapters.DBAdapter;
+import com.example.islam.project.Services.PrayerTimeElapsedService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +45,10 @@ public class MyApplication extends Application {
     private static SharedPreferences sharedPreferences;
     public static String CHANNEL_ID = "com.example.islam.project.channel_id";
     private static int notificationId = 66;
+
+
+    Intent mServiceIntent;
+    private PrayerTimeElapsedService pService;
     //public static int audioID;
 
     public void onCreate() {
@@ -58,12 +64,28 @@ public class MyApplication extends Application {
         sharedPreferences = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         readParams();
         openDB();
+        pService = new PrayerTimeElapsedService();
+        mServiceIntent = new Intent(this, pService.getClass());
+        if (!isMyServiceRunning(pService.getClass())) {
+            startService(mServiceIntent);
+        }
     }
-
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                Log.i ("isMyServiceRunning?", true+"");
+                return true;
+            }
+        }
+        Log.i ("isMyServiceRunning?", false+"");
+        return false;
+    }
     @Override
     public void onTerminate() {
-        super.onTerminate();
         closeDB();
+        stopService(mServiceIntent);
+        super.onTerminate();
     }
 
     public static Context getAppContext() {

@@ -38,10 +38,10 @@ public class PrayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public void notifyWithUpdate(boolean endOfDay) {
-        if(!endOfDay){
-            Resources r = MyApplication.getAppContext().getResources();
-            MyApplication.playNotification(r.getString(R.string.prayer_time_now), r.getStringArray(R.array.prayer_time_now_array)[nextPrayerIndex]);
-        }
+       // if(!endOfDay){
+       //     Resources r = MyApplication.getAppContext().getResources();
+       //     MyApplication.playNotification(r.getString(R.string.prayer_time_now), r.getStringArray(R.array.prayer_time_now_array)[nextPrayerIndex]);
+        //}
         observer.update(endOfDay);
     }
 
@@ -148,10 +148,6 @@ public class PrayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return (position==nextPrayerIndex)?1:0;
     }
 
-    public void remove(int i) {
-        mDataset.remove(i);
-        notifyItemRemoved(i);
-    }
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
