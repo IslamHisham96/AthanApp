@@ -93,13 +93,22 @@ public class Time {
         ret+=this.hours*60*60*1000;
         return ret;
     }
+
+    public long toCalendarMillis(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, hours);
+        calendar.set(Calendar.MINUTE, minutes);
+        calendar.set(Calendar.SECOND, seconds);
+        if(hours==0 && minutes==0)
+            calendar.add(Calendar.DAY_OF_YEAR, 1);
+        return calendar.getTimeInMillis();
+    }
     public static Time getTimeNow(){
         Calendar ca = Calendar.getInstance();
         return new Time(ca.get(Calendar.HOUR_OF_DAY),ca.get(Calendar.MINUTE),ca.get(Calendar.SECOND));
-
     }
 
-    public static Object[] timeToNextPrayer(final List<String[]> prayersFromDB){
+    public static Object[] timeToNextPrayer(final List<DBElement> prayersFromDB){
         Time now = Time.getTimeNow();
         now.increment();
 
@@ -120,7 +129,7 @@ public class Time {
         boolean endOfDay = false;
         int nextPrayerIndex = -1;
         for(int position = 0; position < prayersFromDB.size() - 1; position++){
-            Time prayer = new Time(prayersFromDB.get(position)[1]);
+            Time prayer = new Time(prayersFromDB.get(position).getTime());
             long diff = Time.differenceInMillis(now, prayer);
             if(diff < min){
                 min = diff;
@@ -132,9 +141,47 @@ public class Time {
                 nextPrayerIndex = position+1;
             }
         }
-        String nextPrayer = (endOfDay)?"00:00":prayersFromDB.get(nextPrayerIndex)[1];
+        String nextPrayer = (endOfDay)?"00:00":prayersFromDB.get(nextPrayerIndex).getTime();
         Log.d(Constants.TAG,"next prayer: "+nextPrayer);
         return new Object[]{nextPrayerIndex, Time.difference(Time.getTimeNow(), new Time(nextPrayer))};
+    }
+
+    public static Object[] timeToNextPrayerNew(final List<DBElement> prayersFromDB){
+        Time now = Time.getTimeNow();
+        now.increment();
+
+        Log.d(Constants.TAG,"viewholder");
+        /*
+        if(PrayerTimesFragment.debug) {
+            Log.d(Constants.TAG,"viewholder debug");
+            now.hours = 14;
+            now.minutes = 35;
+            now.seconds = 55;
+        }
+        else{
+            now.hours = 18;
+            now.minutes = 25;
+            now.seconds = 0;
+        }*/
+        long min=Long.MAX_VALUE;
+        boolean endOfDay = false;
+        int nextPrayerIndex = -1;
+        for(int position = 0; position < prayersFromDB.size() - 1; position++){
+            Time prayer = new Time(prayersFromDB.get(position).getTime());
+            long diff = Time.differenceInMillis(now, prayer);
+            if(diff < min){
+                min = diff;
+                nextPrayerIndex = position;
+            }
+            if(position == prayersFromDB.size()-2 && nextPrayerIndex==0 && now.hours >= prayer.hours) {
+                endOfDay = true;
+                Log.d(Constants.TAG, "end of day");
+                nextPrayerIndex = position+1;
+            }
+        }
+        String nextPrayer = (endOfDay)?"00:00":prayersFromDB.get(nextPrayerIndex).getTime();
+        Log.d(Constants.TAG,"next prayer: "+nextPrayer);
+        return new Object[]{nextPrayerIndex, new Time(nextPrayer)};
     }
 
     @Override

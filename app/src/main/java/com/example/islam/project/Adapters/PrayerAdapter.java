@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.islam.project.Constants;
+import com.example.islam.project.DBElement;
 import com.example.islam.project.Fragments.PrayerTimesFragment;
 import com.example.islam.project.MyApplication;
 import com.example.islam.project.Observers.PrayerElapsedObserver;
@@ -27,7 +28,7 @@ import java.util.Locale;
 
 public class PrayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements PrayerElapsedSubject {
     private PrayerElapsedObserver observer;
-    private List<String[]> mDataset;
+    private List<DBElement> mDataset;
     private Time left;
     private int nextPrayerIndex;
 
@@ -62,7 +63,7 @@ public class PrayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
-    public PrayerAdapter(List<String[]> myDataset, PrayerElapsedObserver observer, Time timeLeft, int nextPrayerIndex) {
+    public PrayerAdapter(List<DBElement> myDataset, PrayerElapsedObserver observer, Time timeLeft, int nextPrayerIndex) {
         mDataset = myDataset;
         this.observer = observer;
         left = timeLeft;
@@ -92,7 +93,7 @@ public class PrayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         View customView;
-        String[] data = mDataset.get(position>nextPrayerIndex?position-1:position);
+        DBElement data = mDataset.get(position>nextPrayerIndex?position-1:position);
         switch (holder.getItemViewType()) {
             case 0:
                 PrayerViewHolder pHolder = (PrayerViewHolder) holder;
@@ -101,8 +102,8 @@ public class PrayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     customView.setBackgroundColor(ContextCompat.getColor(MyApplication.getAppContext(),R.color.colorPrimary));
                 TextView nameTxt = customView.findViewById(R.id.nameTxt);
                 TextView timeTxt = customView.findViewById(R.id.timeTxt);
-                nameTxt.setText(data[0]);
-                timeTxt.setText(data[1]);
+                nameTxt.setText(data.getPrayer());
+                timeTxt.setText(data.getTime());
                 break;
 
             case 1:

@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
+
         <activity android:name=".Activities.EntryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,11 +22,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MainActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/main_title"/>
-        <activity android:name=".Activities.PrayerTimesActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Activities.MainActivity"
+            android:label="@string/main_title"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.PrayerTimesActivity"
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".Services.AthanCallIntentService"
@@ -35,11 +38,11 @@
             android:name=".Services.ServiceRestarterBroadcastReceiver"
             android:enabled="true"
             android:exported="true"
-            android:label="RestartServiceWhenStopped"/>
+            android:label="RestartServiceWhenStopped" />
 
         <service
             android:name=".Services.PrayerTimeElapsedService"
-            android:enabled="true"></service>
+            android:enabled="true" />
     </application>
 
 </manifest>

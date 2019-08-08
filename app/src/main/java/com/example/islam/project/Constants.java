@@ -29,6 +29,10 @@ public class Constants {
     public static final String ATHAN_CALL = "athan_call";
     public static final String ACTION_CALL_SUCCESS = "com.example.islam.project.close_action";
     public static final String ACTION_CALL_FAILED = "com.example.islam.project.failed_action";
+    public static final String NOTIFICATION_ACTION = "com.example.islam.project.notification_action";
+    public static final String NOTIFICATION_TITLE = "notification_title";
+    public static final String NOTIFICATION_CONTENT = "notification_content";
+    public static final String NOTIFICATION_WITH_SOUND = "notification_with_sound";
     public static final int TIMEOUT = 20;
 
     public static final String MY_PREFS_NAME = "MyPrefsFile";

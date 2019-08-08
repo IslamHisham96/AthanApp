@@ -106,40 +106,22 @@ public class MyApplication extends Application {
     public static void deleteAllRecords(){
         myDb.deleteAll();
     }
-    public static List<String[]> displayRecordSet() {
-        Cursor cursor = myDb.getAllRows();
-        // populate the message from the cursor
-        ArrayList<String[]> myDataset = new ArrayList<>();
-        // Reset cursor to start, checking to see if there's data:
-        if (cursor.moveToFirst()) {
-            do {
-                // Process the data:
-                int id = cursor.getInt(DBAdapter.COL_ROWID);
-                String event = cursor.getString(DBAdapter.COL_EVENT);
-                //String date = cursor.getString(DBAdapter.COL_DATE);
-                String time = cursor.getString(DBAdapter.COL_TIME);
-                myDataset.add(new String[]{event,time});
-                // Create arraylist(s)? and use it(them) in the list view
-            } while(cursor.moveToNext());
-        }
-        cursor.close();
-        return myDataset;
-    }
-    public static List<String[]> displayRecordSetFromTo(int from, int to) {
+
+    public static List<DBElement> displayRecordSetFromTo(int from, int to) {
         Cursor cursor = myDb.getAllRows();
         Log.d(Constants.TAG,myDb.getCount()+"");
         // populate the message from the cursor
-        ArrayList<String[]> myDataset = new ArrayList<>();
+        ArrayList<DBElement> myDataset = new ArrayList<>();
         // Reset cursor to start, checking to see if there's data:
         if (cursor.moveToFirst()) {
             int id = 0;
             do {
                 // Process the data:
                 if(id>=from && id<to) {
-                    String event = cursor.getString(DBAdapter.COL_EVENT);
+                    String event = cursor.getString(DBAdapter.COL_PRAYER);
                     String date = cursor.getString(DBAdapter.COL_DATE);
                     String time = cursor.getString(DBAdapter.COL_TIME);
-                    myDataset.add(new String[]{event, time, date});
+                    myDataset.add(new DBElement(event, time, date));
                 }
                 id++;
                 // Create arraylist(s)? and use it(them) in the list view

@@ -33,7 +33,7 @@ public class DBAdapter {
 
     // [TO_DO_A3]
     // Update the field numbers here (0 = KEY_ROWID, 1=...)
-    public static final int COL_EVENT = 1;
+    public static final int COL_PRAYER = 1;
     public static final int COL_DATE = 2;
     public static final int COL_TIME = 3;
 

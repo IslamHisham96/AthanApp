@@ -4,7 +4,7 @@ public class DBElement {
     private String prayer;
     private  String date;
     private String time;
-    public DBElement(String prayer, String date, String time){
+    public DBElement(String prayer, String time, String date){
         this.prayer = prayer;
         this.date = date;
         this.time = time;

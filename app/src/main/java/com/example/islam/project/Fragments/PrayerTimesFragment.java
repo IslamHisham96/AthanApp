@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.islam.project.Constants;
+import com.example.islam.project.DBElement;
 import com.example.islam.project.DateUtils;
 import com.example.islam.project.Adapters.PrayerAdapter;
 import com.example.islam.project.MyApplication;
@@ -32,7 +33,7 @@ public class PrayerTimesFragment extends MyFragment implements PrayerElapsedObse
     private PrayerAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private TextView dateTxt;
-    private List<String[]> mDataset;
+    private List<DBElement> mDataset;
     private PrayerElapsedSubject subject;
     private OnFragmentInteractionListener mListener;
     public static boolean debug = true;
@@ -117,7 +118,7 @@ public class PrayerTimesFragment extends MyFragment implements PrayerElapsedObse
         }
         int start = (calendar.get(Calendar.DAY_OF_YEAR) - 1  /*+ (debug?0:1) */) * Constants.PRAYERS_COUNT;
         mDataset = MyApplication.displayRecordSetFromTo(start, start + Constants.PRAYERS_COUNT);
-        dateTxt.setText(DateUtils.formatHijriDate(mDataset.get(0)[2]));
+        dateTxt.setText(DateUtils.formatHijriDate(mDataset.get(0).getDate()));
         mDataset.add(null);
         return true;
     }

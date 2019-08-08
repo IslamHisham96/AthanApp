@@ -80,6 +80,8 @@
     <string name="pronounce">Pronunciation</string>
     <string name="after_prayer_azkar">Dua’s after Salah</string>
     <string name="prayer_time_now">Prayer time due</string>
+    <string name="midnight_title">Midnight</string>
+    <string name="midnight_content">It is now midnight time</string>
     <string-array name="prayer_time_now_array">
         <item>It is now time for Fajr Prayer</item>
         <item>It is now time for Sunrise</item>

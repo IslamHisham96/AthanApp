@@ -104,7 +104,7 @@ public class AthanCallIntentService extends IntentService {
                         for(int k=0;k<names.length;k++){
                             String time = timings.getString(TIMINGS[k]);
                             time = time.substring(0,time.indexOf('(')-1);
-                            MyApplication.addRecord(new DBElement(names[k],date,time));
+                            MyApplication.addRecord(new DBElement(names[k],time,date));
                         }
                     }
                 }
