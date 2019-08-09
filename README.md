@@ -7,9 +7,15 @@ The prayer time elapsed service runs in background to notify user on time for ne
 
 ## Features
 •	View prayer times
+
 •	Get notified if prayer time is due
+
 •	View qibla direction via a rotating compass utilizing magnetic sensor
+
 •	Change location
+
 •	Fine tune hijri date and prayer times
+
 •	Change prayer times calculation method
+
 •	View after prayer azkar
